@@ -1,0 +1,25 @@
+## Render a tree view of a register
+##   $register will be bound to the register
+##   $item     will be bound to the corresponding RegisterItem
+
+#set($rootType = $register.getPropertyValue("ui:hierarchyRootType"))
+#set($rootProp = $register.getPropertyValue("ui:hierarchyRootProperty"))
+#set($x=$register.getPropertyValue("ui:hierarchyChildProperty"))
+#if($x.isLiteral())
+    #set($narrow=$x.lexicalForm)
+#else
+    #set($narrow="<$x.uRI>")
+#end
+
+#if($rootType) 
+  #set($queryPart="?entity a $rootType. ")
+#elseif($rootProp)
+  #set($queryPart="?entity $rootProp []. ")
+#else
+  ## can't happen
+  #set($queryPart="")
+#end
+
+#set($query="SELECT DISTINCT ?item WHERE {<$register.uRI> ^reg:register ?item . ?item version:currentVersion/reg:definition/reg:entity ?entity . $queryPart}")
+
+#parse("hlist-render.vm")

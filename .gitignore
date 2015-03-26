@@ -1,0 +1,13 @@
+*~
+.#*
+/target
+/.classpath
+/.settings
+/.project
+/generated
+/runtime
+/modal.log
+/work
+/derby.log
+/cookie-jar
+.vagrant
