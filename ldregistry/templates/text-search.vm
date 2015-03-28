@@ -20,7 +20,7 @@
   #set($pageres=$qr.page)
 
   <div class="container">
-    <h3>Search results for: $query</h3>
+    <h3>Search results for: $lib.escapeHtml($query)</h3>
 
     <table class="table table-striped table-bordered">
       <thead>
