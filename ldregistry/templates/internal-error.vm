@@ -4,5 +4,5 @@
       Sorry but an internal error has occurred.
     </p>
     <pre>
-      $response.entity
+      $lib.escapeHtml($response.entity)
     </pre>
