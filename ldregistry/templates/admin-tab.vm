@@ -53,9 +53,9 @@
       #set($foundAction=true)
     #end
     <p>
-    #if(!$register)
-    <a href="$uiroot/edit-form?target=$lib.pathEncode($entity.uRI)&return=$root/$uri?tabStatus=adminTab" role="button" class="btn btn-primary btn-sm" >Edit <span class="glyphicon glyphicon-edit"></span></a>
-    #end
+##    #if(!$register)
+    <a href="$uiroot/edit-form?target=$lib.pathEncode($entity.uRI)&return=$root/$uri?tabStatus=adminTab&isRegister=true" role="button" class="btn btn-primary btn-sm" >Edit <span class="glyphicon glyphicon-edit"></span></a>
+##    #end
 
     <a href="$uiroot/edit-form?target=$lib.pathEncode($item.uRI)&return=$root/$uri?tabStatus=adminTab" role="button" class="btn btn-danger btn-sm" >Edit metadata <span class="glyphicon glyphicon-edit"></span></a>
 

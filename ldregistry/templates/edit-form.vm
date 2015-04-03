@@ -1,6 +1,7 @@
 ## Entity/item edit
 ## Parameters:
 ##    $return the page to return to (or is that just referrer)
+##    $isRegister  signals that the target is a register
 ##    $target = URL to be edited
 
 #parse("header.vm")
@@ -20,7 +21,7 @@
             <div class="alert alert-warning">Sorry, can only update managed entities, this looks like an external reference</div>
           #else
             #set($uri=$lib.reg.pathFor($target))
-            #set($response=$registry.perform("Read","$uri?_view=with_metadata", $requestor))
+            #set($response=$registry.perform("Read","$uri?_view=with_metadata#if($isRegister)&non-member-properties#end", $requestor))
             #if($response.status == 404)
               #parse("not-found.vm")
             #elseif($response.status >= 500)
@@ -30,7 +31,8 @@
               $model.setLanguage($language)
               #set($editTarget=$model.getNode($target))
 
-              #set($isItem = $lib.reg.isItem($target))
+              #set($isItem = $lib.reg.isItem($target) || $isRegister == "true")  
+                                     ## treat register as only patchable
 
               #set($posturl = $editTarget.uRI.replaceAll("^https?://[^/]*/","/"))
 
@@ -48,7 +50,7 @@
                   <div class="tab-content">
                     <div class="tab-pane active" id="tabPT">
                       <p>Click on values to edit them. </p>
-                      <table id="edit-table" class="table table-bordered table-striped ui-edit-table" data-root="$editTarget.uRI" data-target="$posturl" >
+                      <table id="edit-table" class="table table-bordered table-striped ui-edit-table" data-root="$editTarget.uRI" data-target="$posturl#if($isRegister)?non-member-properties#end" >
                         <tbody>
                         #set($count = 0)
                         #foreach($pv in $editTarget.listProperties())
