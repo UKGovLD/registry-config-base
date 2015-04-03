@@ -146,7 +146,7 @@
            #set($submitter=$item.listPropertyValues("reg:submitter"))
            #if(!$submitter.isEmpty())
              <tr><td class="align-right"><strong>submitted by</strong></td><td>#foreach($s in $submitter)
-             <a href="$s.getPropertyValue("foaf:openid")">$s.name</a>#if( $foreach.hasNext ), #end#end</td></tr>
+             $s.name#if( $foreach.hasNext ), #end#end</td></tr>
            #end
 #end
 
