@@ -63,6 +63,13 @@
     #set($annotateDialog=true)
   #end
 
+  ## Real delete
+  #if($item && $lib.reg.isPermitted("RealDelete", $uri) && $uri != "_")
+      <form class="form-inline" action="$root/$uri?real_delete" method="post">
+        <input type="submit" value="Delete" class="btn btn-danger btn-sm"></input>
+      </form>
+  #end
+
   #if($foundAction)
     </p>
 
