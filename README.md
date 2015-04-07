@@ -1,8 +1,10 @@
-# registry-core-base
+# registry-config-base
 
 Provides configuration, UI templates and bootstraping for a starting registry installation.
 
 Custom installations can fork this repository then customize the configuration and UI files. This makes it possible to pull in an merge upstream UI fixes made in this base repository.
+
+N.B. Requires registry-core 0.1.1 or higher
 
 ## Layout
 
