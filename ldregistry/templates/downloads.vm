@@ -10,8 +10,8 @@
               <tr>  
                 <td>JSON-LD</td><td><a href="#linkhref($entity)?_format=jsonld">plain</a></td><td><a href="#linkhref($entity)?_format=jsonld&_view=with_metadata">with metadata</a></td>
               </tr>
-              <tr>
-                <td>CSV</td><td>TBD</td>
+              <tr>  
+                <td>CSV</td><td><a href="#linkhref($entity)?_format=csv">export</a></td><td></td>
               </tr>
             </tbody>
           </table>
