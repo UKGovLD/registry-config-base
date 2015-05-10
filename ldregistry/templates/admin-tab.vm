@@ -40,6 +40,9 @@
       #set($foundAction=true)
     #end
     <a href="$uiroot/registration?register=#linkhref($register)&return=$root/$uri" role="button" class="btn btn-primary btn-sm" data-toggle="modal">Add registration <span class="glyphicon glyphicon-plus-sign"></a>
+
+    <a href="#patch-dialog" role="button" class="btn btn-primary btn-sm" data-toggle="modal">Patch</a>
+    #set($patchDialog=true)
   #end
 
   #if($foundAction)
@@ -115,6 +118,37 @@
         </div>
       </div>
     #end
+
+    #if($patchDialog)
+      <div id="patch-dialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h3>Path the register (adding/changing items)</h3>
+            </div>
+            <div id="annotate-dialog-status-body" class="modal-body">
+              #set($target="$root/$uri.replace('/_','/')")
+              <form id="annotate-form" action="$target" method="post" enctype="multipart/form-data" data-action="$target">
+                <div class="form-group">
+                  <label for="chooser">
+                    Choose patch file to upload:
+                  </label>
+                  <input id="chooser" class="form-control" type="file" name="file" multiple />
+                </div>
+                <input type="hidden" name="action" value="edit" />
+                <button class="btn form-submit">patch</button>
+              </form>
+              <div class="ajax-error"></div>
+            </div>
+            <div class="modal-footer">
+              <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    #end
+
   #end
 
   #set($isAdministrator=$lib.reg.isPermitted("Grant", $uri))
