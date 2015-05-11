@@ -44,7 +44,12 @@
 ## Render a value either as a link (if a resource) or as a (trimmed) lexical form
 #macro(render $v)
       #if($v.isResource())
-        #linkfor($v)
+        #if ($v.isAnon())
+          []
+        #else
+          <a href="#linkhrefInt($v)" title="$v.uRI">$v.name</a>
+        #end
+##        #linkfor($v)
       #elseif ($lib.isDatetime($v))
         $lib.printDatetime($v)
       #else
