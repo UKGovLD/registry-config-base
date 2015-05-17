@@ -306,11 +306,15 @@
 <script type="text/javascript">
     $(function() {
 
-       $(".set-status").click(function(event) {
-         var action = $(event.target).attr('data-target') + "?update&status=" + $(event.target).attr('data-status');
-         $.ajax(action,{
+      $(".set-status").click(function(event) {
+        var action = $(event.target).attr('data-target') + "?update&status=" + $(event.target).attr('data-status');
+        var argid = $(event.target).attr('data-arg');
+        if (argid) {
+            action += "&successor=" + $(argid).val();
+        }
+        $.ajax(action,{
             type : "POST",
-            complete :
+            success :
               function(data, status, xhr){
                 $("#status-dialog").modal("hide");
                 location.reload();
@@ -319,8 +323,8 @@
               function(xhr, status, error){
                $(".status-error").html("<div class='alert alert-warning'> <button type='button' class='close' data-dismiss='alert'>&times;</button>Action failed: " + error + " - " + status + "</div>");
               }
-         });
-       });
+        });
+      });
 
     });
 

@@ -163,9 +163,25 @@
                 <h3>$dialogCaption</h3>
               </div>
               <div id="${dialogID}-status-body" class="modal-body">
+                #set($superseded=false)
                 #foreach($status in $lib.reg.nextStates($item.getPropertyValue("reg:status")))
-                    <button class="set-status btn btn-$status.presentation" data-status="$status" data-target="#linkhref($target)">$status</button>
+                    #if($status.label == "superseded")
+                      #set($superseded=true)
+                    #else
+                      <button class="set-status btn btn-$status.presentation" data-status="$status" data-target="#linkhref($target)">$status</button>
+                    #end
                 #end
+              #if($superseded)
+                  <div class="form-group">
+                    <label for="superseded-by">or, superseded by:</label>
+                    <div class="input-group">
+                      <input type="text" class="form-control" id="superseded-by" placeholder="URI for new item">
+                      <span class="input-group-btn">
+                        <button class="set-status btn btn-$status.presentation" data-status="superseded" data-target="#linkhref($target)" data-arg="#superseded-by">superseded</button>
+                      </span>
+                    </div>
+                  </div>
+              #end
               </div>
               <div class="status-error"></div>
               <div class="modal-footer">
