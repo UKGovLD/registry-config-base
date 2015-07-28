@@ -1,7 +1,7 @@
 Name:		registry-config-base
 Version:	1.0
 Release:	1
-Summary:	Scitools CF linked data registry
+Summary:	Registry-core linked data registry
 
 License:	apache
 URL:		https://github.com/ukgovld/registry-config-base
