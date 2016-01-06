@@ -13,7 +13,7 @@
             </tr>
 #end
 
-#set($pageTitle="Search: $query")
+#set($pageTitle="Search: $lib.escapeHtml($query)")
 #parse("header.vm")
 #parse("navbar.vm")
 
