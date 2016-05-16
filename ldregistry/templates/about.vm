@@ -4,14 +4,14 @@
 
     <div class="jumbotron">
       <div class="container">
-        <h1>Environment Registry (alpha)</h1>
+        <h1>$registry.configExtensions.registryName</h1>
       </div>
     </div>
 
+
     <div class="container">
       <div class="row">
-        <p>This is a pilot service to provide management and public access to codes and codelists used by the Defra family of organizations.</p>
-        <p>It is based on the UKGovLD <a href="https://github.com/UKGovLD/ukl-registry-poc/wiki">proof-of-concept design</a> for a Linked Data registry.</p>
+        <p>Based on the UKGovLD <a href="https://github.com/UKGovLD/registry-core/wiki">Linked Data registry</a>.</p>
       </div>
     ## container will be closed by footer
 
