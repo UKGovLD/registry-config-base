@@ -17,8 +17,8 @@
 
     <title>#if($pageTitle) $pageTitle #else #if ($registry.configExtensions.registryName) $registry.configExtensions.registryName #else Registry #end #if($uri): $uri#end #end</title>
 
-    <link href="$assets/css/ea-common.css" rel="stylesheet" />
-##    <link href="$assets/css/bootstrap.min.css" rel="stylesheet" />  ## Included in ea-common
+    <link href="$assets/css/reg-style.css" rel="stylesheet" />
+
     <link href="$assets/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
     <link href="$assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
 
