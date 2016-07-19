@@ -30,3 +30,13 @@ File | Role
 `boot` | Initial register contents
 `config` | Configuration files for the registry instance see [Configuration](https://github.com/UKGovLD/registry-core/wiki/Configuration)
 
+## Change notes
+
+A substantial restructuring of the UI templates and assets is underway. The key changes are noted here:
+
+   * Moved UI assets to subdirectory `ui/assets`. This makes it easier to configure the front end web serve to serve the static assets directly, with only the ui templates being served from tomcat.
+
+   * Updated default look and feel to be more consistent with, but not infringe, gov.uk styling.
+
+   * Restructure the UI templates to split into smaller, more maintanable parts with more consistent naming convention. 
+   
