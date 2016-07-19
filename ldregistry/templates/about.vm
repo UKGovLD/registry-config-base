@@ -1,18 +1,13 @@
-#parse("header.vm")
 #set($nav="about")
-#parse("navbar.vm")
-
+#parse("preamble.vm")
     <div class="jumbotron">
       <div class="container">
         <h1>$registry.configExtensions.registryName</h1>
       </div>
     </div>
 
+    <p>This is a pilot service to provide management and public access to codes and codelists used by the Defra family of organizations.</p>
 
-    <div class="container">
-      <div class="row">
-        <p>Based on the UKGovLD <a href="https://github.com/UKGovLD/registry-core/wiki">Linked Data registry</a>.</p>
-      </div>
-    ## container will be closed by footer
+    <p>It is based on the UKGovLD <a href="https://github.com/UKGovLD/registry-core/wiki"> design</a> for a Linked Data registry.</p>
 
 #parse("footer.vm")

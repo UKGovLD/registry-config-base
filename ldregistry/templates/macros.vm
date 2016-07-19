@@ -54,6 +54,7 @@
       #end
 #end
 
+
 ## Display a description for a resource if one is available, otherwise show the default (which can be empty)
 #macro(description $r $default)
   #if($r.getPropertyValue("dct:description"))

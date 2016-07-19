@@ -32,6 +32,7 @@
 
 ## End of macro
 
+  #set( $foundAction = false )
 
   ## Set status for the entity itself
   #if($lib.reg.isPermitted("StatusUpdate", $uri))
@@ -72,14 +73,10 @@
      <p>
       #set($foundAction=true)
     #end
-    <a href="$uiroot/registration?register=#linkhref($register)&return=$root/$uri" role="button" class="btn btn-default btn-sm" data-toggle="modal">Add registration <span class="glyphicon glyphicon-plus-sign"></a>
+    <a href="$uiroot/registration?register=#linkhref($register)&return=$root/$uri" role="button" class="btn btn-default btn-sm" data-toggle="modal">Add registration <span class="glyphicon glyphicon-plus-sign"></span></a>
 
     <a href="#patch-dialog" role="button" class="btn btn-default btn-sm" data-toggle="modal">Patch</a>
     #set($patchDialog=true)
-  #end
-
-  #if($foundAction)
-    </p>
   #end
 
   ## Editing entity, metadata and annotations
@@ -87,6 +84,8 @@
     #if(!$foundAction)
       <h3 class="text-center">Actions</h3>
       #set($foundAction=true)
+    #else
+      </p>
     #end
     <p>
 ##    #if(!$register)
@@ -108,7 +107,7 @@
   ## Real delete
   #if($item && $lib.reg.isPermitted("RealDelete", $uri) && $uri != "_")
       <form class="form-inline" action="$root/$uri?real_delete" method="post">
-        <input type="submit" value="Delete" class="btn btn-danger btn-sm"></input>
+        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
       </form>
   #end
 
@@ -166,14 +165,14 @@
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               <h3>Patch the register (adding/changing items)</h3>
             </div>
-            <div id="annotate-dialog-status-body" class="modal-body">
+            <div id="patch-dialog-status-body" class="modal-body">
               #set($target="$root/$uri.replace('/_','/')")
-              <form id="annotate-form" action="$target" method="post" enctype="multipart/form-data" data-action="$target">
+              <form class="ajax-form" id="patch-form" action="$target" method="post" enctype="multipart/form-data" data-action="$target">
                 <div class="form-group">
-                  <label for="chooser">
+                  <label for="file">
                     Choose patch file to upload:
                   </label>
-                  <input id="chooser" class="form-control" type="file" name="file" multiple />
+                  <input id="patch-chooser" class="form-control" type="file" name="file" multiple />
                 </div>
                 <input type="hidden" name="action" value="edit" />
                 <button class="btn form-submit">patch</button>
@@ -196,14 +195,14 @@
               <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
               <h3>Import a replacement register tree</h3>
             </div>
-            <div id="annotate-dialog-status-body" class="modal-body">
+            <div id="import-dialog-status-body" class="modal-body">
               #set($target="$root/$uri.replace('/_','/')")
-              <form id="annotate-form" action="$target" method="post" enctype="multipart/form-data" data-action="$target">
+              <form class="ajax-form" id="import-form" action="$target" method="post" enctype="multipart/form-data" data-action="$target">
                 <div class="form-group">
-                  <label for="chooser">
+                  <label for="file">
                     Choose import file to upload:
                   </label>
-                  <input id="chooser" class="form-control" type="file" name="file" multiple />
+                  <input id="import-chooser" class="form-control" type="file" name="file" multiple />
                 </div>
                 <input type="hidden" name="action" value="import" />
                 <button class="btn form-submit">import</button>
@@ -249,7 +248,7 @@
             <form class="form-inline" action="$root/system/security/ungrant" method="post">
               <input type="hidden" name="user" value="$user.openid" />
               <input type="hidden" name="path" value="$path" />
-              <input type="submit" value="remove" class="btn btn-default btn-sm"></input>
+              <input type="submit" value="remove" class="btn btn-default btn-sm">
             </form>
           </td>
         </tr>
