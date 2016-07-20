@@ -25,7 +25,12 @@ To generate a css style sheet from these elements you need install a sass proces
 Then use:
 
     bower install
+
+to install a local copy of boostrap-sass.
+
+Finally to generate a css sheet from the scss sources use:
+
     sass -I bower_components sass/reg-style.scss > ../ldregistry/ui/assets/css/reg-style.css
 
-*Note*: the resulting css file includes all of the customized bootstrap styling so there is no need to separately include bootstrap.css.
+*Note*: the resulting css file includes all of the customized bootstrap styling so there is no need to separately include bootstrap.css in your pages.
 

@@ -27,11 +27,21 @@
 }
 
 .u-margin-1-above {
-  margin-top: 1rem;
+  margin-top: 1em;
 }
 
 .u-margin-1-below {
-  margin-bottom: 1rem;
+  margin-bottom: 1em;
+}
+
+// Legacy synonym
+.space-above {
+   margin-top: 1em;
+}
+
+// Legacy synonym
+.space-below {
+   margin-bottom: 1em;
 }
 
 .u-margin-1-vertical {
@@ -40,11 +50,11 @@
 }
 
 .u-margin05-above {
-  margin-top: 0.5rem;
+  margin-top: 0.5em;
 }
 
 .u-margin05-below {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5em;
 }
 
 .u-margin-05 {
