@@ -3,7 +3,7 @@
 
 #set($pageTitle="Registry login")
 
-#parse("preamble.vm")
+#parse("structure/_preamble.vm")
 
 #set($provider=false)
 #foreach($cookie in $request.cookies)
@@ -148,5 +148,4 @@
   
   <div class="modal-backdrop in"></div>
 
-#parse("footer.vm")
-
+#parse("structure/_footer.vm")

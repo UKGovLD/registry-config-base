@@ -1,5 +1,5 @@
 #set($nav="admin")
-#parse("preamble.vm")
+#parse("structure/_preamble.vm")
 
     #if($subject.isAuthenticated())
         #if($subject.hasRole("administrator"))
@@ -41,4 +41,4 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
-#parse("footer.vm")
+#parse("structure/_footer.vm")
