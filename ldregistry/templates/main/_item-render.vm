@@ -1,20 +1,24 @@
-## Render a page for a regsistered entity - it may be a register or a leaf entry
+## Render a regsistered entity - it may be a register or a leaf entry
+##
+## Input parameters:
 ##   $entity   - the thing to render
 ##   $item     - the RegisterItem corresponding to $entity
 ##   $register - same as $entity if it is a register, otherwise undefined
+##   $versionNumber - the version of the item being displayed (if not current)
+##   $tabStatus - query parameter given tab within the metadata panel which is selected
 
-## Bind $uri to the path for $item so the general action-tab machinery (in footer.vm) works uniformly
-#set($uri = $item.uRI.substring($registry.baseURI.length()))
-#set($uri = $uri.replaceAll("^/", ""))
+## Bind $uri to the path for $item so the general action-tab machinery works uniformly
+#set( $uri = $item.uRI.substring($registry.baseURI.length()) )
+#set( $uri = $uri.replaceAll("^/", "") )
 
-#set($template = $lib.reg.templateFor($entity))
+#set( $template = $lib.reg.templateFor($entity) )
 
 <div class="row">
   <div class="col-md-10">
-    #parse("breadcrumbs.vm")
+    #parse( "main/_breadcrumbs.vm" )
   </div>
   <div class="col-md-offset-1 col-md-1">
-    #showstatus($item.getPropertyValue("reg:status"))
+    #showstatus( $item.getPropertyValue("reg:status") )
   </div>
 </div>
 
@@ -90,41 +94,46 @@
 </div>
 
 #if($register)
-  #set($items = $model.querySelectW("SELECT * where {?page a ldp:Page; api:items ?items.}"))
+  #set( $items = $model.querySelectW("SELECT * where {?page a ldp:Page; api:items ?items.}") )
   #if (!$items.isEmpty())
-    #set($members=$items.get(0).items.asList())
-    #set($hasmembers=!$members.isEmpty())
+    #set( $members = $items.get(0).items.asList() )
+    #set( $hasmembers = !$members.isEmpty() )
   #else
-    #set($hasmembers=false)
+    #set( $hasmembers = false )
   #end
 
-  #if(!$hasmembers)
+  #if( !$hasmembers )
     <h2>... currently empty</h2>
   #else
     #if (($register.getPropertyValue("ui:hierarchyRootType") || $register.getPropertyValue("ui:hierarchyRootProperty")) && $register.getPropertyValue("ui:hierarchyChildProperty"))
       #if(!$listView)
         <h2>Contents (tree view) <a href="$root/$uri?listView=true" class="btn btn-default btn-sm" role="button" data-trigger="hover" data-placement="top" data-content="View contents as a flat list"><span class="glyphicon glyphicon-list"></span></a></h2>
-        #parse("register-tree.vm")
+        #parse( "main/_render-register-as-tree.vm" )
+
       #else
         <h2>Contents (list view) <a href="$root/$uri?treeView=true" class="btn btn-default btn-sm" role="button" data-trigger="hover" data-placement="top" data-content="View contents as a hierarchy"><span class="glyphicon glyphicon-tree-conifer"></span></a></h2>
-        #parse("register-list.vm")
+        #parse( "main/_render-register-as-list.vm" )
+
       #end
     #elseif ($registry.configExtensions.showClassDiagrams && $register.hasResourceValue("rdf:type", "owl:Ontology"))
       #if($classView)
         <h2>Contents <a href="$root/$uri?listView=true" class="btn btn-default btn-sm" role="button" data-trigger="hover" data-placement="top" data-content="View contents as list">Show as list</a></h2>
-        #parse("register-class-diagram.vm")
+        #parse( "main/_register-class-diagram.vm" )
+
       #else
         <h2>Contents <a href="$root/$uri?classView=true" class="btn btn-default btn-sm" role="button" data-trigger="hover" data-placement="top" data-content="View contents as a class diagram">Show as class diagram</a></h2>
-        #parse("register-list.vm")
+        #parse( "main/_render-register-as-list.vm" )
+
       #end
     #else
       <h2>Contents</h2>
-      #parse("register-list.vm")
+      #parse( "main/_render-register-as-list.vm" )
     #end
   #end
 
 #else 
-
+  ## A single entity, not a register
+  
   $lib.reg.addLabels($entity)
 
   <div class="row">
