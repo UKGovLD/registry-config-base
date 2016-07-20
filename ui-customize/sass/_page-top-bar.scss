@@ -12,7 +12,7 @@
   margin-bottom: 2em;
 }
 
-.o-navbar-ea {
+.o-navbar-reg {
   background-color: $top-bar-bg-colour;
   margin-bottom: 0 !important;
 
@@ -78,7 +78,7 @@
 }
 
 @media (min-width: $screen-md-min) {
-  .o-navbar-ea {
+  .o-navbar-reg {
     li {
       margin-right: 24px;
     }
@@ -99,6 +99,9 @@
 
 .navbar-brand {
   padding: 5px 15px;
+  font-size: 150% !important;
+  margin-top: 10px;
+  height: 40px;  
 }
 
 .navbar-collapse.in {
@@ -122,7 +125,35 @@
 }
 
 .navbar-toggle .icon-bar {
-  background-color: #f0f0f0;
+  background-color: $reg-navbar;
 }
 
+.navbar-nav {
+    margin-top: 15px;
 
+    .dropdown-menu li {
+       a {
+        background-color: white !important;
+        color: black;
+        border-bottom: none !important;
+        margin-left: 10px;
+        margin-bottom: 3px;
+      }     
+      
+      a:hover {
+        background-color: gray !important;
+      }   
+
+      .active a {
+        border-bottom: 3px solid $reg-highlight;
+      }
+    }
+}
+
+.nav-text {
+    color: white;
+}
+
+.nav-compact {
+    margin-bottom: 0px;
+}
