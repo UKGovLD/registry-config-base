@@ -36,25 +36,22 @@
           #metadatarow("is a", $entity.listPropertyValues("rdf:type"))
           #metadatarow("category", $entity.listPropertyValues("reg:category"))
           #metadatarow("owned by", $entity.listPropertyValues("reg:owner"))
+          #metadatarow("contains", $entity.listPropertyValues("http://environment.data.gov.uk/registry/structure/ui/entityType"))
           #metadatarow("license", $entity.listPropertyValues("dct:license"))
-          #smetadatarow("rights attribution", $entity.connectedNodes("dct:rights/<http://schema.theodi.org/odrs#attributionText>"))
-          #metadatarow("last changed on", $entity.listPropertyValues("dct:modified"))
+          #smetadatarow("rights attribution", $entity.connectedNodes("dct:rights/odrs:attributionText"))
+          #metadatarow("changed on", $item.listPropertyValues("dct:modified"))
           #nmetadatarow("submitted by", $item.listPropertyValues("reg:submitter"))
           #metadatarow("accepted on", $item.listPropertyValues("dct:dateAccepted"))
           #metadatarow("superseded by", $item.listPropertyValues("reg:successor"))
           #metadatarow("supersedes", $item.listPropertyValues("reg:predecessor"))
         </table>
       </div>
-      <div class="tab-pane" id="allmetadataTab">     
-        <h3  class="text-center">All registration metadata </h3>     
-        #restable($item, "table-striped table-condensed")
-      </div>
       <div class="tab-pane" id="downloadsTab">
-        #parse("downloads.vm")
+        #parse( "main/_md-panel-downloads.vm" )
       </div>
-      #if($register || $template)
+      #if($register)
         <div class="tab-pane" id="propertiesTab">
-          <h3 class="text-center">All properties of the entity</h3>
+          <h3 class="text-center">All properties of the register</h3>
           #restable($entity, "table-striped table-condensed")
         </div>
       #end
@@ -65,7 +62,7 @@
       #end
       #if($subject.isAuthenticated())
         <div class="tab-pane" id="adminTab">
-          #parse("admin-tab.vm")
+          #parse( "main/_md-panel-admin.vm" )
         </div>
       #end
       <div class="tab-pane active" id="collapse-tab">
@@ -76,8 +73,6 @@
   <div class="col-md-2">
     <ul class="nav nav-pills nav-stacked action-tab" id="pillstack">
         <li><a href="#detailsTab">Core metadata</a></li>
-        <li><a href="#allmetadataTab" data-toggle="tab">Reg metadata</a></li>
-        ## #if($register || $template)  ## Suppressed to reduce height of pill stack
         #if($register)
           <li><a href="#propertiesTab">All properties</a></li>
         #end
