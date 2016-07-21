@@ -66,7 +66,7 @@
 
 ##    #set($qparam="&query=$lib.pathEncode($query)")
     #set($qparam="&query=$lib.escapeHtml($query)")
-    #parse("paging.vm")
+    #parse( "main/_paging.vm" )
 
 #else
   #parse("main/_internal-error.vm")

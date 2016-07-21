@@ -1,0 +1,13 @@
+## Render the "Advanced" menu within the navigation bar
+
+<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Advanced <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+        #if($subject.isAuthenticated())
+            <li><a  href="#logout-dialog" role="button" data-toggle="modal">Logout</a></li>
+        #else
+            <li><a href="$absoluteRoot/ui/login?return=$absoluteRoot/$uri">Login</a></li>
+       #end
+       <li><a href="$uiroot/sparql-form">Sparql</a></li>
+   </ul>
+</li>

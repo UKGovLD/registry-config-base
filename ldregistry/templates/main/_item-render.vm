@@ -141,9 +141,9 @@
   		  #restable($entity, "table-striped table-condensed table-bordered")
   		#end
   	</div>
-    #if( ! $registry.configExtensions.suppressLinkView)
+    #if( ! $registry.configExtensions.suppressLinkView )
     <div class="col-md-offset-1 col-md-5">
-      #parse("links-render.vm")
+      #parse( "main/_item-links-render.vm" )
     </div>
     #end
   </div>

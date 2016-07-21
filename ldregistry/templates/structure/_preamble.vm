@@ -5,6 +5,6 @@
 ##    - includes any serive status bar element below the nav
 
 #parse("structure/_header.vm")
-#parse("navbar.vm")
+#parse("nav/_navbar.vm")
 <div class='container' id="main">
 #parse("structure/_service-bar.vm")
