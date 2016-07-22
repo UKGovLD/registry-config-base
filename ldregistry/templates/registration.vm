@@ -70,13 +70,13 @@
           <div class="tab-pane" id="register">
             <div class="ajax-error"></div>
             #set($spec=$lib.reg.getResource("/system/form-templates/register"))
-            #parse( "admin-actions/_form-for.vm" )
+            #parse( "actions/_form-for.vm" )
           </div>
 
           <div class="tab-pane" id="forward">
             <div class="ajax-error"></div>
             #set($spec=$lib.reg.getResource("/system/form-templates/forward"))
-            #parse( "admin-actions/_form-for.vm" )
+            #parse( "actions/_form-for.vm" )
           </div>
 
 
@@ -96,7 +96,7 @@
 
                   <div class="hidden form-choice" id="form-$label">
                     #set($spec=$lib.reg.getResource($form.entityURI))
-                    #parse( "admin-actions/_form-for.vm" )
+                    #parse( "actions/_form-for.vm" )
                     <div class="ajax-error"></div>
                   </div>
 
@@ -106,7 +106,7 @@
 
           <div class="tab-pane" id="item">
             #set($spec=$lib.reg.getResource("/system/form-templates/concept"))
-            #parse( "admin-actions/_form-for.vm" )
+            #parse( "actions/_form-for.vm" )
             <div class="ajax-error"></div>
           </div>
 

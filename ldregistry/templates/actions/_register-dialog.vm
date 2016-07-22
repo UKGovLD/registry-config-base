@@ -1,0 +1,29 @@
+## Render the dialog for regsitering an set of entries by uploading a file (patch, bulk, multi)
+
+<div id="register-dialog" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3>Patch the register (adding/changing items)</h3>
+            </div>
+            <div id="patch-dialog-status-body" class="modal-body">
+                #set($target="$root/$uri.replace('/_','/')")
+                <form class="ajax-form" id="patch-form" action="$target" method="post" enctype="multipart/form-data" data-action="$target">
+                    <div class="form-group">
+                        <label for="file">
+                            Choose patch file to upload:
+                        </label>
+                        <input id="patch-chooser" class="form-control" type="file" name="file" multiple />
+                    </div>
+                    <input type="hidden" name="action" value="edit" />
+                    <button class="btn form-submit">patch</button>
+                </form>
+                <div class="ajax-error"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
