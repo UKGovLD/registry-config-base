@@ -6024,6 +6024,17 @@ footer {
   background-color: #00823b;
   border-radius: 0; }
 
+.icon-input-btn {
+  display: inline-block;
+  position: relative; }
+  .icon-input-btn input[type="submit"] {
+    padding-right: 2em; }
+  .icon-input-btn .glyphicon {
+    display: inline-block;
+    position: absolute;
+    right: 0.65em;
+    top: 30%; }
+
 .result-blob {
   background-color: #f5f5f5;
   margin-bottom: 20px;

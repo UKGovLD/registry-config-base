@@ -13,6 +13,8 @@
 
 #set( $template = $lib.reg.templateFor($entity) )
 
+#set( $isAdministrator = $lib.reg.isPermitted("Grant", $uri) )
+
 <div class="row">
   <div class="col-md-10">
     #parse( "main/_breadcrumbs.vm" )
@@ -61,8 +63,13 @@
         </div>
       #end
       #if($subject.isAuthenticated())
-        <div class="tab-pane" id="adminTab">
-          #parse( "main/_md-panel-admin.vm" )
+        <div class="tab-pane" id="actionsTab">
+          #parse( "main/_md-panel-actions.vm" )
+        </div>
+      #end
+      #if( $isAdministrator )
+        <div class="tab-pane" id="adminsTab">
+          #parse( "main/_md-panel-admins.vm" )
         </div>
       #end
       <div class="tab-pane active" id="collapse-tab">
@@ -81,7 +88,10 @@
           <li><a href="#historyTab" data-toggle="tab">History</a></li>
         #end
         #if($subject.isAuthenticated())
-          <li><a href="#adminTab">Admin</a></li>
+          <li><a href="#actionsTab">Actions</a></li>
+        #end
+        #if( $isAdministrator )
+          <li><a href="#adminsTab">Administrators</a></li>
         #end
         <li id="close-pillstack" class="hide"><a href="#collapse-tab" data-toggle="tab"><span class="glyphicon glyphicon-remove-circle"></span></a></li>
     </ul>

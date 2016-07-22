@@ -22,6 +22,11 @@ td.align-right {
     text-align: right;
 }
 
+/* Actions tab on metadata pane */
+.action-section {
+    margin-bottom: 10px;
+}
+
 /* Table of download formats */
 .formats {
     border: 2px solid lightgrey;
