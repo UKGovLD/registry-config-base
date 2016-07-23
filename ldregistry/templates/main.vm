@@ -7,14 +7,25 @@
 
 #set( $isLandingPage = $uri.isEmpty() && !$entity && !${_browse} )
 
-#set( $nav = "#if( $isLandingPage )browse#{else}landing#end" )
-#parse("structure/_preamble.vm")
+#set( $nav = "#if( $isLandingPage )landing#{else}browse#end" )
 
 #if( $isLandingPage )
+    #parse("structure/_preamble.vm")
     ## Replace with alternative landing page views if preferred
     #parse( "main/_page-category.vm")
 #else
-    #parse( "main/_item-view.vm" )
+    #parse( "structure/_header.vm" )
+    #parse( "main/_fetch_item.vm" )
+    #parse( "nav/_navbar.vm" )
+    <div class='container' id="main">
+        #parse("structure/_service-bar.vm")
+        #if( $render == "item" )
+            #parse( "main/_item-render.vm" )
+        #elseif( $render == "resource" )
+            #parse( "main/_resource-render.vm" )
+        #end
 #end
+
+#renderDialogs()
 
 #parse("structure/_footer.vm")

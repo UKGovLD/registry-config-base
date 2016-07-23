@@ -1,11 +1,4 @@
 ## Action to register new or patched entries in a register
 
-## This version does patch dialog - to be updated
-##<a href="#register-dialog" role="button" class="btn btn-default btn-sm" data-toggle="modal">
-
-## This version does registration page - to be updated
-<a href="$uiroot/registration?register=#linkhref($register)&return=$root/$uri" role="button" class="btn btn-default btn-sm" data-toggle="modal">
-    
+<a href="$uiroot/actions/register-page?register=#linkhref($register)&return=$root/$uri" role="button" class="btn btn-default btn-sm" data-toggle="modal">
     Register new or changed entries</a>
-
-#incdialog( "register" )
