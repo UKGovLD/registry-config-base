@@ -34,4 +34,7 @@
         #if($item && $lib.reg.isPermitted("RealDelete", $uri) && $uri != "_")
             #action( "delete" )
         #end
+        #if( !$register && $lib.reg.isPermitted("Update", $uri) )
+            #action( "replace" )
+        #end
     #endActionSection()

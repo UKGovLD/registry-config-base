@@ -10,7 +10,7 @@
               #set($target="$root/$uri.replace('/_','/')")
                 <form class="ajax-form" id="import-form" action="$target" method="post" enctype="multipart/form-data" data-action="$target">
                     <div class="form-group">
-                        <label for="file">
+                        <label for="import-chooser">
                             Choose import file to upload:
                         </label>
                         <input id="import-chooser" class="form-control" type="file" name="file" multiple />
