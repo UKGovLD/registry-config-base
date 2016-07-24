@@ -42,12 +42,10 @@
 ## Parse the view response
 
     #if($response.status == 404)
-      #set( $render = false )
-      #parse( "main/_not-found.vm" )
+      #set( $render = "not-found" )
 
     #elseif($response.status >= 500)
-      #set( $render = false )
-      #parse( "main/_internal-error.vm" )
+      #set( $render = "error" )
 
     #else
       ## At this point should have a successful RDF description
