@@ -23,6 +23,10 @@
             #parse( "main/_item-render.vm" )
         #elseif( $render == "resource" )
             #parse( "main/_resource-render.vm" )
+        #elseif( $render == "not-found" )
+            #parse( "main/_not-found.vm" )
+        #elseif( $render == "error" )
+            #parse( "main/_internal-error.vm" )
         #end
 #end
 

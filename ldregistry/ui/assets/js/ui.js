@@ -107,7 +107,7 @@ $(function() {
         }
     });
 
-    // Hierarchicall views
+    // Hierarchical views
     var hlistHandler = function(event) {
         var button = $(event.target).closest("a");
         var parent = button.closest("div");

@@ -56,6 +56,11 @@
           <h3 class="text-center">All properties of the register</h3>
           #restable($entity, "table-striped table-condensed")
         </div>
+      #else
+        <div class="tab-pane" id="metadataTab">
+          <h3 class="text-center">All metadata properties</h3>
+          #restable($item, "table-striped table-condensed")
+        </div>
       #end
       #if(!$register)
         <div class="tab-pane" id="historyTab" data-action="showhistory" data-uri='$uri' data-uiroot='$uiroot'>
@@ -82,6 +87,8 @@
         <li><a href="#detailsTab">Core metadata</a></li>
         #if($register)
           <li><a href="#propertiesTab">All properties</a></li>
+        #else
+          <li><a href="#metadataTab">All metadata</a></li>
         #end
         <li><a href="#downloadsTab">Download</a></li>
         #if(!$register)
