@@ -25,6 +25,9 @@
         #end
 
        <li role="separator" class="divider"></li>
+       #if( $register )
+           <li><a href="$root/$uri?showStatus=accepted">Show all entries</a></li>
+        #end
        <li><a href="$uiroot/sparql-form">Sparql</a></li>
 
         #if( $subject.isAuthenticated() )
