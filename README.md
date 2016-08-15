@@ -48,6 +48,7 @@ A substantial restructuring of the UI templates has been completed. The key chan
 The templates are structured as follows:
 
 Template | Role
+---|---
 `templates/` | All top level page templates
 `templates/main.vm` | All normal page renders go through this, if it is the landing page it displays the category based view (`templates/main/_page-category.vm`), otherwise it normally displays a register or item (`templates/main/_item-render.vm`)
 `templates/structure` | Elements used on every page to provide the header (`_header.vm`), optional status bar (`_service-bar.vm`) and footer (`_footer.vm`). A standard page normally starts with a sequence of header, navbar and status bar via `_preamble.vm`.
