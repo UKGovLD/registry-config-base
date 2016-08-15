@@ -4,7 +4,7 @@ Provides configuration, UI templates and bootstraping for a starting registry in
 
 Custom installations can fork this repository then customize the configuration and UI files. This makes it possible to pull in an merge upstream UI fixes made in this base repository.
 
-N.B. Requires registry-core 0.1.1 or higher
+N.B. Requires registry-core 1.2.0 or higher
 
 ## Layout
 
