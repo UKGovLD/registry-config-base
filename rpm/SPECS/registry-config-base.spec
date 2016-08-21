@@ -1,5 +1,5 @@
 Name:		registry-config-base
-Version:	1.0
+Version:	1.2
 Release:	1
 Summary:	Registry-core linked data registry
 
