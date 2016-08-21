@@ -34,7 +34,7 @@
         #if($item && $lib.reg.isPermitted("RealDelete", $uri) && $uri != "_")
             #action( "delete" )
         #end
-        #if( !$register && $lib.reg.isPermitted("Update", $uri) )
+        #if( !$register && $lib.reg.isPermitted("Update", $uri) && $entity.uRI.startsWith( $registry.baseURI ) )
             #action( "replace" )
         #end
     #endActionSection()

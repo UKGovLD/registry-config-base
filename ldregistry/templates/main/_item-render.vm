@@ -39,7 +39,7 @@
           #metadatarow("category", $entity.listPropertyValues("reg:category"))
           #metadatarow("owned by", $entity.listPropertyValues("reg:owner"))
           #metadatarow("contains", $entity.listPropertyValues("http://environment.data.gov.uk/registry/structure/ui/entityType"))
-          #metadatarow("license", $entity.listPropertyValues("dct:license"))
+          #metadatarow("licence", $entity.listPropertyValues("dct:license"))
           #smetadatarow("rights attribution", $entity.connectedNodes("dct:rights/odrs:attributionText"))
           #metadatarow("changed on", $item.listPropertyValues("dct:modified"))
           #nmetadatarow("submitted by", $item.listPropertyValues("reg:submitter"))
@@ -63,13 +63,23 @@
         </div>
       #end
       #if(!$register)
-        <div class="tab-pane" id="historyTab" data-action="showhistory" data-uri='$uri' data-uiroot='$uiroot'
-        @@ Reconsider next block
-        #if( $item.listPropertyValues("reg:predecessor") )
-            data-supercedes='#foreach($value in $item.listPropertyValues("reg:predecessor"))#render($value)#if( $foreach.hasNext )| #end#end'
-        #end
-        >
-          Pane is loading ...
+        <div class="tab-pane" id="historyTab" data-action="showhistory" data-uri='$uri' data-uiroot='$uiroot'>
+            <div class="tab-pane-inner">
+                Pane is loading ...
+            </div>
+            #if( ! $item.listPropertyValues("reg:predecessor").isEmpty() )
+                <div class="row space-above">
+                    <div class="col-md-3">
+                        <strong>Supercedes</strong>
+                    </div>
+                    <div class="col-md-9">
+                        #foreach( $value in $item.listPropertyValues("reg:predecessor") )
+                            #render($value)#if( $foreach.hasNext )| #end
+                        #end
+                    </div>
+
+                </div>
+            #end
         </div>
       #end
       #if($subject.isAuthenticated())

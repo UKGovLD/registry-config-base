@@ -25,6 +25,13 @@
         #end
 
        <li role="separator" class="divider"></li>
+       #if( $register )
+           #if( $showStatus == "accepted" )
+               <li><a href="$root/$uri?showStatus=valid">Hide deprecated entries</a></li>
+            #else
+               <li><a href="$root/$uri?showStatus=accepted">Show all entries</a></li>
+            #end
+        #end
        <li><a href="$uiroot/actions/check-page">Check URI</a></li>
        <li><a href="$uiroot/sparql-form">Sparql</a></li>
 

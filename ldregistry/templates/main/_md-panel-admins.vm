@@ -2,29 +2,29 @@
 
 #macro(grantdialog $grant $gdid)
     <div id="$gdid" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3>Locate a registered user to grant $grant administration rights to</h3>
-          </div>
-          <div class="modal-body">
-            <form id="user-form-$grant"  class="form-search query-form"
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3>Locate a registered user to grant $grant administration rights to</h3>
+                </div>
+                <div class="modal-body">
+                    <form id="user-form-$grant"  class="form-search query-form"
         data-target="$root/system/security/listusers?uri=/$uri&suffix=test&grant=$grant&query=" data-query="#user-query-$grant" data-result="#user-list-$grant">
-              <div class="input-group">
-                <input class="form-control" id="user-query-$grant" type="text" class="input-medium">
-                <span class="input-group-btn">
-                  <button id="user-search-$grant" type="submit" class="btn">Search</button>
-                </span>
-              </div>
-            </form>
-            <div id="user-list-$grant"></div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
+                        <div class="input-group">
+                            <input class="form-control" id="user-query-$grant" type="text" class="input-medium">
+                            <span class="input-group-btn">
+                                <button id="user-search-$grant" type="submit" class="btn">Search</button>
+                            </span>
+                        </div>
+                    </form>
+                    <div id="user-list-$grant"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->  
 #end
 ##    of macro
