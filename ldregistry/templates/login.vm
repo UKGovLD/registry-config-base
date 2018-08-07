@@ -2,6 +2,7 @@
 ##    $return the page to return to (or is that just referrer)
 
 #set($pageTitle="Registry login")
+#set($oauthProviders = $registry.configExtensions.oauth2.config.providers)
 
 #parse("header.vm")
 #parse("navbar.vm")
@@ -58,16 +59,12 @@
               #end
               <div class="row space-above">
                 <div class="col-md-12">
-                  <form class="form-horizontal" action="$root/system/security/loginoa" method="post">
-                    #if(!$registry.configExtensions.suppressPasswordLogin)
-                    <p>Or login via a registered Google G+ account</p>
-                    #end
-                    <div class="input-group">
-                      <input type="hidden" name="provider" value="https://accounts.google.com/o/oauth2/auth" />
-                      <input type="hidden" name="return" value="$return" />
-                      <input type="submit" value="login via Google" class="btn btn-primary" type="button" />
-                    </div><!-- /input-group -->
-                  </form>
+                  #if(!$registry.configExtensions.suppressPasswordLogin && !$oauthProviders.isEmpty())
+				    <p>Or log in to a registered account via an OAuth provider.</p>
+				  #end
+				  #foreach($provider in $oauthProviders)
+                    #oauthLogin($provider, $return)
+                  #end
                 </div>
               </div>
             </div>
@@ -108,16 +105,12 @@
               #end
               <div class="row space-above">
                 <div class="col-md-12">
-                  <form class="form-horizontal" action="$root/system/security/registeroa" method="post">
-                    #if(!$registry.configExtensions.suppressPasswordLogin)
-                    <p>Or authorize via a Google G+ account</p>
-                    #end
-                    <div class="input-group">
-                      <input type="hidden" name="provider" value="https://accounts.google.com/o/oauth2/auth" />
-                      <input type="hidden" name="return" value="$return" />
-                      <input type="submit" value="Create account via Google" class="btn btn-primary" type="button" />
-                    </div>
-                  </form>
+                  #if(!$registry.configExtensions.suppressPasswordLogin && !$oauthProviders.isEmpty())
+                  	<p>Or register via an OAuth provider.</p>
+                  #end
+                  #foreach($provider in $oauthProviders)
+                    #oauthRegister($provider, $return)
+                  #end
                 </div>
               </div>
             </div>
