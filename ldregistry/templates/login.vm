@@ -20,6 +20,8 @@
     #set( $lroot = $root )
 #end
 
+#set( $return = $lib.reg.xssCleanURI($return) )
+
 <div class="modal-page container">
   <div class="row">
     <div class="col-md-12 modal-page-panel">
