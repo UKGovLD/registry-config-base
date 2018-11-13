@@ -7,13 +7,6 @@
 #parse("header.vm")
 #parse("navbar.vm")
 
-#set($provider=false)
-#foreach($cookie in $request.cookies)
-  #if($cookie.name == "ukgovld-login-provider")
-    #set($provider=$cookie.value)
-  #end
-#end
-
 <div class="modal-page container">
   <div class="row">
     <div class="col-md-12 modal-page-panel">
