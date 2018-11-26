@@ -249,3 +249,23 @@
     #restable($root, "table-condensed table-bordered")
   #end
 #end
+
+#macro(oauthLogin $provider, $return)
+  <form class="form-horizontal" action="$root/system/security/loginoa" method="post">
+	<div class="input-group space-above">
+	  <input type="hidden" name="provider" value="$provider.name" />
+	  <input type="hidden" name="return" value="$return" />
+	  <input type="submit" value="Login via $provider.label" class="btn btn-primary" type="button" />
+	</div><!-- /input-group -->
+  </form>
+#end
+
+#macro(oauthRegister $provider, $return)
+  <form class="form-horizontal" action="$root/system/security/registeroa" method="post">
+	<div class="input-group space-above">
+	  <input type="hidden" name="provider" value="$provider.name" />
+	  <input type="hidden" name="return" value="$return" />
+	  <input type="submit" value="Create account via $provider.label" class="btn btn-primary" type="button" />
+	</div>
+  </form>
+#end
