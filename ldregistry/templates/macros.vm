@@ -137,33 +137,52 @@
   #end
 #end
 
-## Display a set of property/value pairs in the RDF browser
-#macro(restable $res $classes)
-  <table class="table $classes">
-##    <thead><tr><th>Property</th><th>Value</th></tr></thead>
+#macro(langtable $values)
+  <table class="langTable">
     <tbody>
-      #foreach($pv in $res.listProperties())
+      #foreach($v in $values)
         <tr>
-          <td class="align-right span2"> <strong title="$pv.getProp().uRI">$pv.getProp().name</strong> </td>
-          <td>
-            #foreach($v in $pv.getValues())
-              #if($v.isList())
-                  (#foreach($e in $v.asList())#resentry($e)#if( $foreach.hasNext ), #end#end)
-              #elseif($v.isAnon())
-                #restable($v)
-              #else
-                #resentry($v)
-              #end
-              #if( $foreach.hasNext )|#end
-              #if( $foreach.count > 100 ) ... #break #end
-            #end
-            <br />
+          <td align="right">
+            <strong>$v.language</strong>
+          </td>
+          <td align="left" class="langValueColumn">
+            #render($v)
           </td>
         </tr>
       #end
     </tbody>
   </table>
+#end
 
+## Display a set of property/value pairs in the RDF browser
+#macro(restable $res $classes)
+  <table class="table $classes">
+    <tbody>
+      #foreach($pv in $res.listProperties())
+        <tr>
+          <td class="align-right span2"> <strong title="$pv.getProp().uRI">$pv.getProp().name</strong> </td>
+          <td>
+            #if($pv.isMultilingual())
+              #langtable($pv.getValues())
+            #else
+              #foreach($v in $pv.getValues())
+                #if($v.isList())
+                    (#foreach($e in $v.asList())#resentry($e)#if( $foreach.hasNext ), #end#end)
+                #elseif($v.isAnon())
+                  #restable($v)
+                #else
+                  #resentry($v)
+                #end
+                #if( $foreach.hasNext )|#end
+                #if( $foreach.count > 100 ) ... #break #end
+              #end
+              <br />
+            #end
+          </td>
+        </tr>
+      #end
+    </tbody>
+  </table>
 #end
 
 ## Conditional row in a metadata table
