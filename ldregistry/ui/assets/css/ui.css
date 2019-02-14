@@ -76,3 +76,7 @@ td.align-right {
 #uriField {
     width: 100%;
 }
+
+.langTable .langValueColumn {
+    padding-left: 5px;
+}
