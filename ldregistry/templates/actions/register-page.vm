@@ -77,16 +77,16 @@ $(function() {
         error: ".ajax-error",
         target: ".compare-result",
         button: "#registration-form-compare",
-        form: "#registration-form",
-        data: {
-          isEdit: function() {
-            return getUploadOption() === "edit";
-          }
+        form: "#registration-form"
+      },
+      data: {
+        isEdit: function() {
+          return getUploadOption() === "edit";
         }
       }
     });
 
-    $("#registration-form").submit( function(){
+    $("#registration-form").submit( function() {
         var form = $(this);
         var returnURL = form.attr('data-return');
         var target = form.attr('action');
