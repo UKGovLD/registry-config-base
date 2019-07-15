@@ -4,17 +4,21 @@
           <h3 class="text-center">Download formats available</h3>
           <table class="table table-condensed">
             <tbody>
+
+              #macro(downloadFormat $label $format)
+                <td>$label</td>#if(!$versionNumber)<td><a href="$href?_format=$format&status=$visibleStatus">plain</a></td>#end<td><a href="$href?_format=$format&_view=with_metadata&status=$visibleStatus">with metadata</a></td>
+              #end
               <tr>
-                <td>RDF ttl</td>#if(!$versionNumber)<td><a href="$href?_format=ttl">plain</a></td>#end<td><a href="$href?_format=ttl&_view=with_metadata">with metadata</a></td>
+                #downloadFormat("RDF ttl", "ttl")
               </tr>
-              <tr>  
-                <td>RDF/XML</td>#if(!$versionNumber)<td><a href="$href?_format=rdf">plain</a></td>#end<td><a href="$href?_format=rdf&_view=with_metadata">with metadata</a></td>
+              <tr>
+                #downloadFormat("RDF/XML", "rdf")
               </tr>
-              <tr>  
-                <td>JSON-LD</td>#if(!$versionNumber)<td><a href="$href?_format=jsonld">plain</a>#end</td><td><a href="$href?_format=jsonld&_view=with_metadata">with metadata</a></td>
+              <tr>
+                #downloadFormat("JSON-LD", "jsonld")
               </tr>
-              <tr>  
-                <td>CSV</td>#if(!$versionNumber)<td><a href="$href?_format=csv">plain</a></td>#end<td><a href="$href?_format=csv&_view=with_metadata">with metadata</a></td>
+              <tr>
+                #downloadFormat("CSV", "csv")
               </tr>
               #if(!$versionNumber)
               <tr>
