@@ -49,9 +49,10 @@
                     </label>
                     <input id="patch-chooser" class="form-control" type="file" name="file" multiple />
                 </div>
-                <input id="action-field" type="hidden" name="action" value="register" />
-                <button class="btn form-submit">upload</button>
+                <button class="btn form-submit">Upload</button>
+                <button id="registration-form-compare" type="button" class="btn">Find Similar</button>
             </form>
+            <div class="compare-result"></div>
         </div>
 
         <div class="modal-page-footer">
@@ -62,17 +63,38 @@
 </div>
 <div class="modal-backdrop in"></div>
 
+<script type="text/javascript" src="$assets/js/registry-compare.js"></script>
 
 <script type="text/javascript">
 $(function() {
-    $("#registration-form").submit( function(){
+
+    var getUploadOption = function() {
+      return $("\#registration-form input[name=uploadOptions]:checked").val();
+    }
+
+    registryCompare({
+      selector: {
+        error: ".ajax-error",
+        target: ".compare-result",
+        button: "#registration-form-compare",
+        form: "#registration-form"
+      },
+      data: {
+        isEdit: function() {
+          return getUploadOption() === "edit";
+        }
+      }
+    });
+
+    $("#registration-form").submit( function() {
         var form = $(this);
         var returnURL = form.attr('data-return');
         var target = form.attr('action');
-        var uploadOption = $("\#registration-form input[name=uploadOptions]:checked").val();
+        var uploadOption = getUploadOption();
+        var data = { action: "register" };
         if (uploadOption) {
             if (uploadOption === "edit") {
-                $("\#action-field").val( "edit" );
+                data.action = "edit";
             } else if (uploadOption === "batch") {
                 target = target + "?batch-managed";
             }
@@ -80,6 +102,7 @@ $(function() {
         form.ajaxSubmit(
           {
             url: target,
+            data: data,
             success:
                 function(data, status, xhr){
                     if (returnURL) {

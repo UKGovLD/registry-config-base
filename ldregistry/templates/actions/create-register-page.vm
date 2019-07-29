@@ -18,7 +18,7 @@
             <div class="ajax-error"></div>
 
             <form id="create-register-form" action="$register" method="post" data-return="$return">
-                <input type="hidden" name="action" value="register-inline" />
+                <!-- <input type="hidden" name="action" value="register-inline" /> -->
                 <input type="hidden" name="form-type" value="$registry.baseURI/system/form-templates/register" />
 
                 <p>All fields are required.</p>
@@ -76,8 +76,10 @@
                 #end
 
                 <button class="btn form-submit">Create register</button>
+                <button class="btn" type="button" id="create-register-form-compare">Find similar</button>
             </form>
 
+            <div class="compare-results"></div>
         </div>
 
         <div class="modal-page-footer">
@@ -88,6 +90,8 @@
 </div>
 <div class="modal-backdrop in"></div>
 
+<script type="text/javascript" src="$assets/js/registry-compare.js"></script>
+
 <script type="text/javascript">
 $(function() {
     var setOption = function(option, attrName, options, oName) {
@@ -96,17 +100,41 @@ $(function() {
         }
     };
 
-    $("#create-register-form").submit( function(){
+    var makeOptions = function() {
+        var selection = $("\#register-type option:selected").first();
+        var options = {};
+        setOption( selection, "data-membership",  options, "membership" );
+        setOption( selection, "data-imembership", options, "inv-membership" );
+        setOption( selection, "data-type",        options, "type" );
+        setOption( selection, "data-hRoot",       options, "hRoot" );
+        setOption( selection, "data-hChild",      options, "hChild" );
+
+        return options;
+    };
+
+    var onError = function(xhr, status, error) {
+        $(".ajax-error").html("<div class='alert alert-warning'> <button type='button' class='close' data-dismiss='alert'>&times;</button>Action failed: " + error + " - " + xhr.responseText + "</div>");
+    }
+
+    registryCompare({
+      selector: {
+        target: ".compare-results",
+        error: ".ajax-error",
+        button: "#create-register-form-compare",
+        form: "#create-register-form"
+      },
+      data: {
+        apply: function (data) {
+          return Object.assign(data, makeOptions());
+        }
+      }
+    });
+
+    $("#create-register-form").submit(function() {
         var form = $(this);
         var returnURL = form.attr('data-return');
-        var option = $("\#register-type option:selected").first();
-        var regType = option.val();
-        var options = {};
-        setOption( option, "data-membership",  options, "membership" );
-        setOption( option, "data-imembership", options, "inv-membership" );
-        setOption( option, "data-type",        options, "type" );
-        setOption( option, "data-hRoot",       options, "hRoot" );
-        setOption( option, "data-hChild",      options, "hChild" );
+        var options = makeOptions();
+        options.action = "register-inline";
 
         form.ajaxSubmit(
           {
@@ -120,10 +148,7 @@ $(function() {
                     }
                 },
 
-            error:
-              function(xhr, status, error){
-                 $(".ajax-error").html("<div class='alert alert-warning'> <button type='button' class='close' data-dismiss='alert'>&times;</button>Action failed: " + error + " - " + xhr.responseText + "</div>");
-              }
+            error: onError
           }
         );
         return false;
