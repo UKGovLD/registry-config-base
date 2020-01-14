@@ -22,4 +22,5 @@
     rdfs:label "Monitored Registers"@en;
     dct:description "A system register which lists the registers which should be monitored to trigger notifications."@en;
     reg:category  er-cat:System;
+    reg:containedItemClass reg:MonitorSpec;
     .
