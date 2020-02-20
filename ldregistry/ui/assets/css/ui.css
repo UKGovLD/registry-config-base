@@ -80,3 +80,19 @@ td.align-right {
 .langTable .langValueColumn {
     padding-left: 5px;
 }
+
+.dropdown.languages ul li div {
+  display: inline-block;
+}
+
+.dropdown.languages ul li div.langCode {
+   min-width: 1.5em;
+}
+
+.dropdown ul li span {
+  background-color: white;
+  color: black;
+  border-bottom: none;
+  margin-left: 10px;
+  margin-bottom: 3px;
+}
