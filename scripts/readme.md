@@ -14,7 +14,7 @@ It expects two input parameters:
 To run the script with default parameters, use the command:
 
 ```
-python3 validate-templates.py
+python3 validate-templates.py -l <lang_props_file> -t <templates_root_dir>
 ```
 
 from the `scripts` directory of `registry-config-base`.
@@ -22,5 +22,4 @@ You can also supply the `-h` parameter to show help documentation.
 
 The script reports:
 - __Unused properties__ - properties that are defined in the language properties file but are not used in any of the templates.
-- __Missused properties__ - properties that are defined in the language properties file but the incorrect number of parameters are passed to it.
 - __Undefined properties__ - properties that are __*not*__ defined in the language properties file but their use is attempted by one or more templates.
