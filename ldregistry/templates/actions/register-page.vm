@@ -9,7 +9,7 @@
     <div class="col-md-10 col-md-offset-1 modal-page-panel">
     
         <div class="modal-page-head">
-            <h3>$msg.register.update.heading</h3>
+            <h3>$msg['register.update.heading']</h3>
         </div>
 
         <div class="modal-page-body">
@@ -18,45 +18,45 @@
 
         <div class="row space-above">
             <div class="col-md-8">
-                $msg.register.update.upload.description
+                $msg['register.update.upload.description']
             </div>
         </div>
         <div id="patch-dialog-status-body" class="modal-body">
 
             <form id="registration-form" action="$register" method="post" enctype="multipart/form-data" data-return="$return">
-                <label>$msg.register.update.content.label</label>
+                <label>$msg['register.update.content.label']</label>
                 <div class="radio">
                     <label>
                         <input type="radio" name="uploadOptions" id="uploadOptions1" value="edit" checked>
-                        $msg.register.update.content.edit.description
+                        $msg['register.update.content.edit.description']
                     </label>
                 </div>
                 <div class="radio">
                     <label>
                         <input type="radio" name="uploadOptions" id="uploadOptions2" value="batch">
-                        $msg.register.update.content.batch.description
+                        $msg['register.update.content.batch.description']
                     </label>
                 </div>
                 <div class="radio">
                     <label>
                         <input type="radio" name="uploadOptions" id="uploadOptions3" value="">
-                        $msg.register.update.content.new.description
+                        $msg['register.update.content.new.description']
                     </label>
                 </div>
                 <div class="form-group">
                     <label for="file">
-                        $msg.register.update.file.label
+                        $msg['register.update.file.label']
                     </label>
                     <input id="patch-chooser" class="form-control" type="file" name="file" multiple />
                 </div>
                 <button class="btn form-submit">Upload</button>
-                <button id="registration-form-compare" type="button" class="btn">$msg.registerItem.compare.button</button>
+                <button id="registration-form-compare" type="button" class="btn">$msg['registerItem.compare.button']</button>
             </form>
             <div class="compare-result"></div>
         </div>
 
         <div class="modal-page-footer">
-            <a href="$return" class="btn pull-right">$msg.ui.close</a>
+            <a href="$return" class="btn pull-right">$msg['ui.close']</a>
         </div>
       
     </div>

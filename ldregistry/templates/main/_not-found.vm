@@ -1,5 +1,5 @@
   <div class="jumbotron">
-    <h1>$msg.error.notFound.heading</h1>
+    <h1>$msg['error.notFound.heading']</h1>
     <p>
       $msg.get('error.notFound.note', $target, $lib.escapeHtml($target))
     </p>

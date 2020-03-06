@@ -6,6 +6,6 @@
       </div>
     </div>
 
-    <p>$msg.about.service</p>
+    <p>$msg['about.service']</p>
 
 #parse("structure/_footer.vm")

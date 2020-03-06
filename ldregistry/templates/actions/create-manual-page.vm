@@ -37,7 +37,7 @@
         </div>
 
         <div class="modal-page-footer">
-            <a href="$return" class="btn pull-right">$msg.ui.close</a>
+            <a href="$return" class="btn pull-right">$msg['ui.close']</a>
         </div>
       
     </div>

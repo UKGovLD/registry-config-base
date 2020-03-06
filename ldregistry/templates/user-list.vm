@@ -16,7 +16,7 @@
           #if($uri)
           <input type="hidden" name="path" value="$uri" />
           #end
-          <input type="submit" value="$msg.users.permission.grant.button" class="btn" />
+          <input type="submit" value="$msg['users.permission.grant.button']" class="btn" />
         </form>
       </td>
     </tr>
@@ -26,8 +26,8 @@
 
 <div class="space-above">
   #if($uri)
-    <p>$msg.users.permission.grant.uri</p>
+    <p>$msg['users.permission.grant.uri']</p>
   #else
-    <p>$msg.users.permission.grant.global</p>
+    <p>$msg['users.permission.grant.global']</p>
   #end
 </div>

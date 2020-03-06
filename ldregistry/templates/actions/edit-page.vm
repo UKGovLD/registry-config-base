@@ -16,7 +16,7 @@
         <div class="modal-page-body">
 
           #if(!$target.startsWith($registry.baseURI))
-            <div class="alert alert-warning">$msg.registerItem.edit.external.note</div>
+            <div class="alert alert-warning">$msg['registerItem.edit.external.note']</div>
           #else
             #set($uri=$lib.reg.pathFor($target))
             #set($response=$registry.perform("Read","$uri?_view=with_metadata#if($isRegister)&non-member-properties#end", $requestor))
@@ -34,18 +34,18 @@
 
               #set($posturl = $editTarget.uRI.replaceAll("^https?://[^/]*/","/"))
 
-                <p>$msg.registerItem.edit.syntax.note</p>
+                <p>$msg['registerItem.edit.syntax.note']</p>
 
                 <div class="tabbable">
 
                   <ul class="nav nav-tabs nav-compact">
-                    <li class="active"><a href="#tabPT" data-toggle="tab">$msg.registerItem.propertyTable.label</a></li>
-                    <li><a href="#tabPrefixes" data-toggle="tab">$msg.registerItem.prefix.label</a></li>
+                    <li class="active"><a href="#tabPT" data-toggle="tab">$msg['registerItem.propertyTable.label']</a></li>
+                    <li><a href="#tabPrefixes" data-toggle="tab">$msg['registerItem.prefix.label']</a></li>
                   </ul>
 
                   <div class="tab-content">
                     <div class="tab-pane active" id="tabPT">
-                      <p>$msg.registerItem.edit.property.prompt</p>
+                      <p>$msg['registerItem.edit.property.prompt']</p>
                       <table id="edit-table" class="table table-bordered table-striped ui-edit-table" data-root="$editTarget.uRI" data-target="$posturl#if($isRegister)?non-member-properties#end" >
                         <tbody>
                         #set($count = 0)
@@ -88,8 +88,8 @@
         </div>
 
       <div class="modal-page-footer">
-        <button class="btn btn-primary space-above edit-table-save" data-isitem="$isItem" data-return="$return">$msg.registerItem.edit.save.button</button>
-        <a href="$return" class="btn pull-right">$msg.ui.close</a>
+        <button class="btn btn-primary space-above edit-table-save" data-isitem="$isItem" data-return="$return">$msg['registerItem.edit.save.button']</button>
+        <a href="$return" class="btn pull-right">$msg['ui.close']</a>
       </div>
 
     </div>

@@ -6,7 +6,7 @@
       <div class="col-sm-6">
         <div class="">
           <div class="c-footer-credits">
-            <h4 class="">$msg.footer.support.heading</h4>
+            <h4 class="">$msg['footer.support.heading']</h4>
             <p>
                 Support and contact information goes here.
             </p>
@@ -15,17 +15,17 @@
       </div>
 
       <div class="col-sm-6">
-        <h4>$msg.footer.about.heading</h4>
+        <h4>$msg['footer.about.heading']</h4>
         <p>
             Unless otherwise stated, all content is available under the
           <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a>
         </p>
         <p class="c-footer-epimorphics">
-          <span class="i18n">$footer.about.credit.format("Epimorphics", "http://www.epimorphics.com")</span>
+          <span class="i18n">$msg.get('footer.about.credit', "Epimorphics", "http://www.epimorphics.com")</span>
         </p>
         #if($registry.languageManager.useCookies)
           <p>
-            $msg.footer.language.cookies.notice
+            $msg['footer.language.cookies.notice']
           </p>
         #end
       </div>

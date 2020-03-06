@@ -13,7 +13,7 @@
       #end
       
       #if(!$reserved.isEmpty())
-        <h3>$msg.register.reserved.heading</h3>
+        <h3>$msg['register.reserved.heading']</h3>
         <div class="result-blob">
           <div class="blob-inner">
             <p>$msg.get('register.reserved.note', $reserved)</p>

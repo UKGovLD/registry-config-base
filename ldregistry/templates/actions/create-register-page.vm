@@ -21,32 +21,32 @@
                 <!-- <input type="hidden" name="action" value="register-inline" /> -->
                 <input type="hidden" name="form-type" value="$registry.baseURI/system/form-templates/register" />
 
-                <p>$msg.ui.allFieldsRequired</p>
+                <p>$msg['ui.allFieldsRequired']</p>
 
                 <div class="form-group">
                     <label class="control-label" for="id-input">
-                        $msg.register.notation.description
+                        $msg['register.notation.description']
                     </label>
-                    <input class="form-control" type="text" name="id" id="id-input" placeholder="$msg.register.notation.prompt" required>
+                    <input class="form-control" type="text" name="id" id="id-input" placeholder="$msg['register.notation.prompt']" required>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label" for="label-input">
-                        $msg.register.label.description
+                        $msg['register.label.description']
                     </label>
-                    <input class="form-control" type="text" name="label" id="label-input" placeholder="$msg.register.label.prompt" required>
+                    <input class="form-control" type="text" name="label" id="label-input" placeholder="$msg['register.label.prompt']" required>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label" for="description-input">
-                        $msg.register.description.description
+                        $msg['register.description.description']
                     </label>
-                    <textarea class="form-control" rows="2" name="description" id="description-input" placeholder="$msg.register.description.prompt" required></textarea>
+                    <textarea class="form-control" rows="2" name="description" id="description-input" placeholder="$msg['register.description.prompt']" required></textarea>
                 </div>
 
                 <div class="form-group">
                     <label class="control-label" for="register-type">
-                        $msg.register.createManual.type.description
+                        $msg['register.createManual.type.description']
                     </label>
                     <select class="form-control" name="register-type" id="register-type">
                         #foreach( $option in $createRegisterTypes )
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label class="control-label" for="$tagindex-input"> $tag.label </label>
                         <select class="form-control" name="$tag.formField" id="$tagindex-input">
-                            <option value="">$msg.ui.emptyValue</option>
+                            <option value="">$msg['ui.emptyValue']</option>
                             #foreach( $option in $lib.reg.listMembers( $tag.register ) )
                                 <option value="$option.entityURI">$option.labels.iterator().next()</option>
                             #end
@@ -75,15 +75,15 @@
                     </div>
                 #end
 
-                <button class="btn form-submit">$msg.register.createManual.button</button>
-                <button class="btn" type="button" id="create-register-form-compare">$msg.registerItem.compare.button</button>
+                <button class="btn form-submit">$msg['register.createManual.button']</button>
+                <button class="btn" type="button" id="create-register-form-compare">$msg['registerItem.compare.button']</button>
             </form>
 
             <div class="compare-results"></div>
         </div>
 
         <div class="modal-page-footer">
-            <a href="$return" class="btn pull-right">$msg.ui.close</a>
+            <a href="$return" class="btn pull-right">$msg['ui.close']</a>
         </div>
       
     </div>

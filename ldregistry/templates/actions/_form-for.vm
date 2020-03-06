@@ -21,14 +21,14 @@
           <textarea class="form-control" rows="2" name="$notation" id="$notation" placeholder="$field.name"></textarea>
         #elseif($field.hasResourceValue("ui:fieldType", "ui:anyURIField"))
           <input class="input-large popinfo form-control" type="text" name="$notation" id="$notation" placeholder="$field.name"
-            data-trigger="hover" data-placement="bottom" data-content="$msg.registerItem.property.prompt">
+            data-trigger="hover" data-placement="bottom" data-content="$msg['registerItem.property.prompt']">
         #end
     </div>
 
   #end
   
-  <button class="btn">$msg.registerItem.create.button</button>
-  <button id="create-entry-form-compare" type="button" class="btn">$msg.registerItem.compare.button</button>
+  <button class="btn">$msg['registerItem.create.button']</button>
+  <button id="create-entry-form-compare" type="button" class="btn">$msg['registerItem.compare.button']</button>
 </form>
 
 <div class="compare-results"></div>

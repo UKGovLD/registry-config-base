@@ -1,7 +1,7 @@
 <div class="jumbotron">
     <h1>$msg.get('error.internal.title', $response.status)</h1>
     <p>
-      $msg.error.internal.description
+      $msg['error.internal.description']
     </p>
     <pre>
       $lib.escapeHtml($response.entity)

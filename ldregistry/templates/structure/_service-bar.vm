@@ -3,7 +3,7 @@
     <div class='o-top-colour-bar'></div>
     <div class='o-service-phase'>
         <span class='c-service-phase-beta-badge'>
-            $msg.service.beta.label
+            $msg['service.beta.label']
         </span>
-        $msg.service.beta.description.format("TBD")
+        $msg.get('service.beta.description', 'TBD')
     </div>
