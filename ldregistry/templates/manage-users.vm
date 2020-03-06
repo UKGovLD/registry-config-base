@@ -7,9 +7,9 @@
         <input type="hidden" name="id" value="$user.openid" >
         <input type="hidden" name="return" value="$absoluteRoot/$uri" >
         #if( $add )
-            <input class="btn btn-sm " type="submit" value="$msg['users.manage.admin.button']" >
+            <input class="btn btn-sm " type="submit" value="$msg['admin.users.admin.button']" >
         #else
-            $msg['users.manage.admin.label'] <button type="submit" class="btn btn-sm">
+            $msg['admin.users.admin.label'] <button type="submit" class="btn btn-sm">
                 <i class="fa fa-times-circle"></i>
             </button>
         #end
@@ -17,7 +17,7 @@
 #end
 
     #if($subject.isAuthenticated() && $subject.hasRole("administrator"))
-        <h1>$msg['users.manage.heading']</h1>
+        <h1>$msg['admin.users.heading']</h1>
         #set( $admins = $registry.userStore.listAdminUsers() )
         <table class="table table-striped table-bordered datatable">
             <thead>
@@ -42,21 +42,21 @@
                                 <input type="hidden" name="role" value="" >
                                 <input type="hidden" name="id" value="$user.openid" >
                                 <input type="hidden" name="return" value="$absoluteRoot/$uri" >
-                                <span class="text-nowrap">$msg['users.manage.admin.label']
+                                <span class="text-nowrap">$msg['admin.users.admin.label']
                                     <button type="submit" class="btn btn-sm">
                                         <i class="fa fa-times-circle"></i>
                                     </button>
                                 </span>
                             </form>
                           #else
-                            $msg['users.manage.admin.label']
+                            $msg['admin.users.admin.label']
                           #end
                         #elseif( $user.openid != "http://localhost/anon" )
                             <form class="form-inline" action="$root/system/security/setrole" method="post">
                                 <input type="hidden" name="role" value="administrator" >
                                 <input type="hidden" name="id" value="$user.openid" >
                                 <input type="hidden" name="return" value="$absoluteRoot/$uri" >
-                                <input class="btn btn-sm btn-default" type="submit" value="$msg['users.manage.admin.button']" >
+                                <input class="btn btn-sm btn-default" type="submit" value="$msg['admin.users.admin.button']" >
                             </form>
                         #end
                     </td>
@@ -70,7 +70,7 @@
                                 <input type="hidden" name="user" value="$user.openid" >
                                 <input type="hidden" name="path" value="/" >
                                 <input type="hidden" name="return" value="$absoluteRoot/$uri" >
-                                <input class="btn btn-sm btn-default" type="submit" value="$msg['users.manage.replication.button']" >
+                                <input class="btn btn-sm btn-default" type="submit" value="$msg['admin.users.replication.button']" >
                             </form>
                         #end
                     </td>
@@ -79,7 +79,7 @@
                         <form class="form-inline" action="$root/system/security/unregister" method="post">
                             <input type="hidden" name="id" value="$user.openid" >
                             <input type="hidden" name="return" value="$absoluteRoot/$uri" >
-                            <input class="btn btn-sm btn-default" type="submit" value="$msg['users.manage.remove.button']" >
+                            <input class="btn btn-sm btn-default" type="submit" value="$msg['admin.users.remove.button']" >
                         </form>
                         #end
                     </td>
@@ -89,7 +89,7 @@
         </table>
 
         <p></p>
-        <a class="btn btn-primary" role="button" href="$root/ui/user-register?return=$absoluteRoot/$uri">$msg['users.manage.register.button']</a>
+        <a class="btn btn-primary" role="button" href="$root/ui/user-register?return=$absoluteRoot/$uri">$msg['admin.users.register.button']</a>
 
     #else
         <h3>$msg['admin.loginRequired']</h3>

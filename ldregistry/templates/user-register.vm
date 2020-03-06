@@ -7,14 +7,14 @@
   <div class="row">
     <div class="col-md-12 modal-page-panel">
       <div class="modal-page-head">
-        <h1>$msg['users.manage.register.heading']</h1>
+        <h1>$msg['admin.users.register.heading']</h1>
       </div>
       <div class="modal-page-body">
         <div class="row space-above">
         
           <div class="col-md-offset-2 col-md-5 blob-password">
             <div class="blob-inner">
-              <h2>$msg['users.manage.details.heading']</h2>
+              <h2>$msg['admin.users.details.heading']</h2>
               #if( ! $registry.configExtensions.suppressPasswordLogin)
               <div class="row">
                 <form class="form-horizontal form-validated" role="form"  action="$root/system/security/pwregisterOther" method="post" autocomplete="off">
@@ -45,7 +45,7 @@
                   <input type="hidden" name="return" value="$return" />
                   <div class="form-group">
                     <div class="col-md-offset-1 col-md-10">
-                      <button type="submit" class="btn btn-default">$msg['users.manage.create.button']</button>
+                      <button type="submit" class="btn btn-default">$msg['admin.users.create.button']</button>
                     </div>
                   </div>
                 </form>
