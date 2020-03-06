@@ -5,16 +5,14 @@ import sys
 import getopt
 
 class Property:
-    def __init__(self, name, paramCount):
+    def __init__(self, name):
         self.name = name
-        self.paramCount = paramCount
         self.isUsed = False
     def __repr__(self):
-        return "Property({}, {}, {})".format(self.name, self.paramCount, self.isUsed)
+        return "Property({}, {}, {})".format(self.name, self.isUsed)
 
 properties = {}
 undefined_properties = {}
-missused_properties = {}
 
 def remove_prefix(text, prefix):
     return text[text.startswith(prefix) and len(prefix):]
@@ -28,41 +26,26 @@ def read_properties(file_path):
             if line.isspace(): continue
             split = line.split("=", 1)
             name = split[0]
-            paramCount = len(re.findall(r"{[0-9]}", split[1]))
-            properties[name] = Property(name, paramCount)
+            properties[name] = Property(name)
+
+def report_property(template_name, prop):
+    if prop in properties:
+        properties[prop].isUsed = True
+    else:
+        if prop in undefined_properties:
+            undefined_properties[prop].append(template_name)
+        else:
+            undefined_properties[prop] = [template_name]
 
 def find_simple_props(template_name, data):
-    simpleProps = re.findall(r"\$msg\['(\w+(\.\w+)+)'\]", data)
+    simpleProps = re.findall(r"\$msg\[[\"'](\w+(\.\w+)+)[\"']\]", data)
     for foundProp in simpleProps:
-        prop = foundProp[0]
-        if prop in properties:
-            properties[prop].isUsed = True
-        else:
-            if prop in undefined_properties:
-                undefined_properties[prop].append(template_name)
-            else:
-                undefined_properties[prop] = [template_name]
+        report_property(template_name, foundProp[0])
 
 def find_complex_props(template_name, data):
-    complexProps = re.findall(r"\$msg\.get\([\"']([^,'\"]+)[\"'](,[^\(\)]+)*\)", data)
+    complexProps = re.findall(r"\$msg\.get\([\"']([^,'\"]+)[\"'](,[^\)]+)*\)", data)
     for foundProp in complexProps:
-        prop = foundProp[0]
-        paramCount = len(list(filter(None, foundProp[1].split(","))))
-        if prop in properties:
-            if properties[prop].paramCount == paramCount:
-                properties[prop].isUsed = True
-            else:
-                if prop in missused_properties:
-                    missused_properties[prop].append(template_name)
-                else:
-                    missused_properties[prop] = [template_name]
-        else:
-            if prop not in missused_properties:
-                if prop in undefined_properties:
-                    undefined_properties[prop].append(template_name)
-                else:
-                    undefined_properties[prop] = [template_name]
-
+        report_property(template_name, foundProp[0])
 
 def read_templates(src_dir_path):
     src_dir_path = ensure_last_slash(src_dir_path)
@@ -75,23 +58,21 @@ def read_templates(src_dir_path):
             find_complex_props(template_name, data)
 
 def print_unused_props():
-    if all(prop.isUsed for prop in properties.values()): return
-    print("Unused props:")
-    for prop in properties:
-        if not properties[prop].isUsed:
-            print("     Unused property \"{}\"".format(prop))
+    if all(prop.isUsed for prop in properties.values()): 
+        print("No unused properties found.")
+    else:
+        print("Unused props:")
+        for prop in properties:
+            if not properties[prop].isUsed:
+                print("     Unused property \"{}\"".format(prop))
 
 def print_undefined_props():
-    if len(undefined_properties) == 0: return
-    print("Undefined props:")
-    for prop in undefined_properties:
-        print("     Undefined property \"{}\" found in: [{}]".format(prop, ",".join(undefined_properties[prop])))
-
-def print_missused_properties():
-    if len(missused_properties) == 0: return
-    print("Missused props:")
-    for prop in missused_properties:
-        print("     Missused property \"{}\" found in: [{}]".format(prop, ",".join(missused_properties[prop])))
+    if len(undefined_properties) == 0: 
+        print("No undefined properties found.")
+    else:
+        print("Undefined props:")
+        for prop in undefined_properties:
+            print("     Undefined property \"{}\" found in: [{}]".format(prop, ",".join(undefined_properties[prop])))
 
 def process_args(argv):
     language_props_file = ''
@@ -122,6 +103,7 @@ def process_args(argv):
         template_root_dir = "/opt/ldregistry/templates"
     else:
         print("     template root directory (-t | --template_root) set to {}".format(template_root_dir))
+    print()
     return (language_props_file, template_root_dir)
 
 def main(argv):
@@ -132,7 +114,6 @@ def main(argv):
 
     print_unused_props()
     print_undefined_props()
-    print_missused_properties()
 
 
 if __name__ == "__main__": main(sys.argv[1:])
