@@ -6,7 +6,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                    <h3>$msg.get('users.permission.grant.search', {0})</h3>
+                    <h3>$msg.get('admin.permissions.grant.search', $grant)</h3>
                 </div>
                 <div class="modal-body">
                     <form id="user-form-$grant"  class="form-search query-form"
@@ -70,8 +70,8 @@
     <div class="row space-above">
       <div class="col-md-7">
         <a href="#grant-user-dialog" role="button" class="btn btn-default btn-sm" data-toggle="modal">$grant</a>
-        <a href="#grant-submitter" role="button" class="btn btn-default btn-sm" data-toggle="modal">$msg['users.permission.submitter.label']</a>
-        <a href="#grant-reviewer" role="button" class="btn btn-default btn-sm" data-toggle="modal">$msg['users.permission.reviewer.label']</a>
+        <a href="#grant-submitter" role="button" class="btn btn-default btn-sm" data-toggle="modal">$msg['admin.permissions.submitter.label']</a>
+        <a href="#grant-reviewer" role="button" class="btn btn-default btn-sm" data-toggle="modal">$msg['admin.permissions.reviewer.label']</a>
       </div>
       <div class="col-md-2">
         <form class="form-inline" action="$root/system/security/grant" method="post">
@@ -102,6 +102,6 @@
 
     #grantdialog($grant, "grant-user-dialog")
     #if($register)
-      #grantdialog($msg['users.permission.submitter.label'], "grant-submitter")
-      #grantdialog($msg['users.permission.reviewer.label'], "grant-reviewer")
+      #grantdialog($msg['admin.permissions.submitter.label'], "grant-submitter")
+      #grantdialog($msg['admin.permissions.reviewer.label'], "grant-reviewer")
     #end

@@ -107,7 +107,7 @@
         #end
         <li><a href="#downloadsTab">$msg['ui.download']</a></li>
         #if(!$register)
-          <li><a href="#historyTab" data-toggle="tab">$msg['history.label']</a></li>
+          <li><a href="#historyTab" data-toggle="tab">$msg['registerItem.history.label']</a></li>
         #end
         #if($subject.isAuthenticated())
           <li><a href="#actionsTab">$msg['user.actions.label']</a></li>
