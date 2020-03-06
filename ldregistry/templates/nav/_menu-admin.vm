@@ -9,7 +9,7 @@
         #if( ! $registry.configExtensions.suppressPasswordLogin)
             <li><a  href="$uiroot/change-password">$msg['user.password.change.label']</a></li>
         #else
-            <li><a  href="$uiroot/temporary-password">$user.password.temporary.label</a></li>
+            <li><a  href="$uiroot/temporary-password">$msg['user.password.temporary.label']</a></li>
         #end
         #if($subject.hasRole("administrator"))
             <li role="separator" class="divider"></li>

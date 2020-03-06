@@ -21,7 +21,7 @@
                         <input class="form-control" type="text" name="annotation" id="annotation" value="label" />
                     </div>
                     <input type="hidden" name="action" value="annotate" />
-                    <button class="btn form-submit">$annotate.button</button>
+                    <button class="btn form-submit">$msg['annotate.button']</button>
                 </form>
                 <div class="ajax-error"></div>
             </div>
