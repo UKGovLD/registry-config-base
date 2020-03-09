@@ -14,7 +14,7 @@
 
         <div class="modal-page-body">
             <select class="form-control" id="form-chooser">
-                <option>Choose a form:</option>
+                <option>$msg['registerItem.createManual.form.prompt']</option>
                 #foreach($form in $lib.reg.listMembers("/system/form-templates"))
                     #if(!$form.entityURI.endsWith("/forward") && !$form.entityURI.endsWith("/register"))
                         #set($label = $form.labels.iterator().next().lexicalForm)
