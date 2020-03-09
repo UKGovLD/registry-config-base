@@ -41,7 +41,7 @@
               <label for="displayFormat">$msg['sparql.results.label']</label>
               <div class="dropdown" >
                 <a data-toggle="dropdown" class="btn btn-custom2 display-format" href="#" data-value="tsv" id="displayFormat">
-                  <span>table</span> <i class="icon-collapse"></i>
+                  <span>$msg['sparql.results.table.button']</span> <i class="icon-collapse"></i>
                 </a>
                 <ul class="dropdown-menu formats  " role="menu" aria-labelledby="dropdownMenu2">
                   <li role='presentation' class="" ><a data-value="tsv" role='menuitem' tabindex='-1' href='#'>$msg['sparql.results.format.table']</a></li>

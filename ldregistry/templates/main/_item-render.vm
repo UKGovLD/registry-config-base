@@ -93,7 +93,7 @@
         </div>
       #end
       <div class="tab-pane active" id="collapse-tab">
-        <span class="small">Select tab to expand</span>
+        <span class="small">$msg['registerItem.tab.prompt']</span>
       </div>
     </div>
   </div>
@@ -144,11 +144,11 @@
       #end
     #elseif ($registry.configExtensions.showClassDiagrams && $register.hasResourceValue("rdf:type", "owl:Ontology"))
       #if($classView)
-        <h2>Contents <a href="$root/$uri?listView=true" class="btn btn-default btn-sm" role="button" data-trigger="hover" data-placement="top" data-content="$msg['register.view.list.description']">$msg['register.view.list.label']</a></h2>
+        <h2>$msg['registerItem.contents.label'] <a href="$root/$uri?listView=true" class="btn btn-default btn-sm" role="button" data-trigger="hover" data-placement="top" data-content="$msg['register.view.list.description']">$msg['register.view.list.label']</a></h2>
         #parse( "main/_register-class-diagram.vm" )
 
       #else
-        <h2>Contents <a href="$root/$uri?classView=true" class="btn btn-default btn-sm" role="button" data-trigger="hover" data-placement="top" data-content="$msg['register.view.ontology.description']">$msg['register.view.ontology.label']</a></h2>
+        <h2>$msg['registerItem.contents.label'] <a href="$root/$uri?classView=true" class="btn btn-default btn-sm" role="button" data-trigger="hover" data-placement="top" data-content="$msg['register.view.ontology.description']">$msg['register.view.ontology.label']</a></h2>
         #parse( "main/_render-register-as-list.vm" )
 
       #end
@@ -166,7 +166,7 @@
   <div class="row">
 
   	<div class=#if($registry.configExtensions.suppressLinkView) "col-md-12" #else "col-md-6" #end>
-  		<h2>Definition</h2>
+  		<h2>~$msg['registerItem.definition.heading']</h2>
   		#if($template)
           #parse($template)
   		#else

@@ -49,7 +49,7 @@
                     </label>
                     <input id="patch-chooser" class="form-control" type="file" name="file" multiple />
                 </div>
-                <button class="btn form-submit">Upload</button>
+                <button class="btn form-submit">$msg['register.update.upload.button']</button>
                 <button id="registration-form-compare" type="button" class="btn">$msg['registerItem.compare.button']</button>
             </form>
             <div class="compare-result"></div>
