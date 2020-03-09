@@ -51,6 +51,7 @@
         <tbody>
           #foreach($item in $lib.reg.wrap( $fr.allResults ))
             #set($entity = $item.connectedNodes("reg:definition/reg:entity")[0])
+            $entity.modelW.setLanguage($language)
 
           <tr>
             <td>
