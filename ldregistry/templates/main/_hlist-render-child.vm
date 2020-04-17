@@ -3,6 +3,14 @@
 #set($root=$registry.rootPath)
 #set($uiroot="$root/ui")
 
-#set($query="SELECT DISTINCT ?item WHERE {<$concept> $narrow ?entity. ?entity ^reg:entity/^reg:definition/^version:currentVersion ?item}")
+#set($query="SELECT DISTINCT ?item WHERE 
+             { <$concept> $narrow ?entity. 
+               { SELECT ?entity (sample(?i2) as ?item) WHERE 
+                 { ?entity ^reg:entity/^reg:definition/^version:currentVersion ?i2 } 
+                 GROUP BY ?entity 
+               } OPTIONAL { 
+                 ?entity rdfs:label|skos:prefLabel ?label 
+               } 
+             } ORDER BY lcase(?label)")
 
 #parse( "main/_hlist-render.vm" )
