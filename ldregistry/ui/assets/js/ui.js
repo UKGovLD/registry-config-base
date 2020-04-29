@@ -8,7 +8,7 @@ $(function() {
     // Enable datatable processing
     $('.datatable').dataTable( {
       "language": {
-        "search": "Filter entries:"
+        "url": registry.assets + "/js/locales/dataTables/" + registry.language + ".json"
       },
       "lengthMenu": [ [20, 50, 100, -1], [20, 50, 100, "All"] ]
     } );
@@ -63,7 +63,11 @@ $(function() {
           }
           tab.find(".tab-pane-inner").load(url, function(){
              $('.action-tab').tab(); //reinitialize tabs
-             $('.datatable').dataTable();
+             $('.datatable').dataTable({
+               "language": {
+                 "url": registry.assets + "/js/locales/dataTables/" + registry.language + ".json"
+               }
+             });
              processQueryForms();
            });
         };

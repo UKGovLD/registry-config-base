@@ -33,7 +33,12 @@
     </div><!--/.row-->
   </div>
 </footer>
-
+    <script type="text/javascript">
+      window.registry = {
+        assets: "$lib.reg.jsEncode($assets)",
+        language: "$lib.reg.jsEncode($language)"
+      };
+    </script>
 
     <script type="text/javascript" src="$assets/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="$assets/js/jquery.dataTables.min.js"></script>
