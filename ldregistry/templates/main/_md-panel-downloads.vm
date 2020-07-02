@@ -21,7 +21,7 @@
     </tr>
     #if($register)
     <tr>
-      #downloadFormat("ROR", "ror")
+      <td>ROR</td><td><a href="$href?_format=ror&status=$visibleStatus">plain</a></td><td></td>
     </tr>
     #end
     #if(!$versionNumber)
