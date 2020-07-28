@@ -1,29 +1,32 @@
 ## Render the table of download options for an item
 
-          #set($href = "#if($versionNumber)#linkhref($item):$versionNumber#else#linkhref($entity)#end")
-          <h3 class="text-center">Download formats available</h3>
-          <table class="table table-condensed">
-            <tbody>
-
-              #macro(downloadFormat $label $format)
-                <td>$label</td>#if(!$versionNumber)<td><a href="$href?_format=$format&status=$visibleStatus">plain</a></td>#end<td><a href="$href?_format=$format&_view=with_metadata&status=$visibleStatus">with metadata</a></td>
-              #end
-              <tr>
-                #downloadFormat("RDF ttl", "ttl")
-              </tr>
-              <tr>
-                #downloadFormat("RDF/XML", "rdf")
-              </tr>
-              <tr>
-                #downloadFormat("JSON-LD", "jsonld")
-              </tr>
-              <tr>
-                #downloadFormat("CSV", "csv")
-              </tr>
-              #if(!$versionNumber)
-              <tr>
-                <td>Export all</td><td><a href="$href?export">export</a></td><td></td>
-              </tr>
-              #end
-            </tbody>
-          </table>
+#set($href = "#if($versionNumber)#linkhrefInt($item):$versionNumber#else#linkhrefInt($entity)#end")
+<h3 class="text-center">Download formats available</h3>
+<table class="table table-condensed">
+  <tbody>
+    #macro(downloadFormat $label $format)
+      <td>$label</td>
+      #if(!$versionNumber)
+        <td><a href="$lib.asURL($href).addQuery("_format", $format).addQuery("status", $visibleStatus).toString()">plain</a></td>
+      #end
+      <td><a href="$lib.asURL($href).addQuery("_format", $format).addQuery("status", $visibleStatus).addQuery("_view", "with_metadata").toString()">with metadata</a></td>
+    #end
+    <tr>
+      #downloadFormat("RDF ttl", "ttl")
+    </tr>
+    <tr>
+      #downloadFormat("RDF/XML", "rdf")
+    </tr>
+    <tr>
+      #downloadFormat("JSON-LD", "jsonld")
+    </tr>
+    <tr>
+      #downloadFormat("CSV", "csv")
+    </tr>
+    #if(!$versionNumber)
+    <tr>
+      <td>Export all</td><td><a href="$href?export">export</a></td><td></td>
+    </tr>
+    #end
+  </tbody>
+</table>
