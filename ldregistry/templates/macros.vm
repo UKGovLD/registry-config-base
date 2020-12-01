@@ -140,7 +140,7 @@
 #macro(langtable $values)
   <table class="langTable">
     <tbody>
-      #foreach($v in $reg.sortLanguages($values))
+      #foreach($v in $reg.sortLanguages($values, $language))
         <tr>
           <td align="right">
             <strong>$v.language</strong>
