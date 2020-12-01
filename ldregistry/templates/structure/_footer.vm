@@ -24,6 +24,11 @@
           <span class="i18n">Design and development by</span>
           <a href="http://www.epimorphics.com">Epimorphics</a>.
         </p>
+        #if($registry.languageManager.useCookies)
+          <p>
+            This website uses cookies to store your language preferences.
+          </p>
+        #end
       </div>
 
     </div><!--/.row-->
