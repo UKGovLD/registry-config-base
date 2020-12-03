@@ -1,41 +1,43 @@
 ## Render the table of download options for an item
 
-          #set($href = "#if($versionNumber)#linkhref($item):$versionNumber#else#linkhref($entity)#end")
-          <h3 class="text-center">$msg['registerItem.download.format.heading']</h3>
-          <table class="table table-condensed">
-            <tbody>
+#set($href = "#if($versionNumber)#linkhrefInt($item):$versionNumber#else#linkhrefInt($entity)#end")
+<h3 class="text-center">$msg['registerItem.download.format.heading']</h3>
+<table class="table table-condensed">
+  <tbody>
 
-              #macro(downloadFormat $label $format)
-                <td>$label</td>
-                #if(!$versionNumber)
-                  <td>
-                    <a href="$href?_format=$format&status=$visibleStatus">$msg['registerItem.download.plain.label']</a>
-                  </td>
-                #end
-                <td>
-                  <a href="$href?_format=$format&_view=with_metadata&status=$visibleStatus">$msg['registerItem.download.withMetadata.label']</a>
-                </td>
-              #end
-              <tr>
-                #downloadFormat("RDF ttl", "ttl")
-              </tr>
-              <tr>
-                #downloadFormat("RDF/XML", "rdf")
-              </tr>
-              <tr>
-                #downloadFormat("JSON-LD", "jsonld")
-              </tr>
-              <tr>
-                #downloadFormat("CSV", "csv")
-              </tr>
-              #if(!$versionNumber)
-              <tr>
-                <td>$msg['registerItem.download.export.label']</td>
-                <td>
-                  <a href="$href?export">$msg['registerItem.download.export.button']</a>
-                </td>
-                <td></td>
-              </tr>
-              #end
-            </tbody>
-          </table>
+    #macro(downloadFormat $label $format)
+      <td>$label</td>
+      #if(!$versionNumber)
+        <td>
+          <a href="$lib.asURL($href).addQuery("_format", $format).addQuery("status", $visibleStatus).toString()">$msg['registerItem.download.plain.label']</a>
+        </td>
+      #end
+      <td>
+        <a href="$lib.asURL($href).addQuery("_format", $format).addQuery("status", $visibleStatus).addQuery("_view", "with_metadata").toString()">$msg['registerItem.download.withMetadata.label']</a>
+      </td>
+    #end
+    <tr>
+      #downloadFormat("RDF ttl", "ttl")
+    </tr>
+    <tr>
+      #downloadFormat("RDF/XML", "rdf")
+    </tr>
+    <tr>
+      #downloadFormat("JSON-LD", "jsonld")
+    </tr>
+    <tr>
+      #downloadFormat("CSV", "csv")
+    </tr>
+    #if(!$versionNumber)
+    <tr>
+      <td>$msg['registerItem.download.export.label']</td>
+      <td>
+        #set($exportUrl = "#if($entity.uRI.startsWith($registry.baseURI))#linkhref($entity)#else#linkhref($item)#end" )
+        <a href="$lib.asURL($exportUrl).addQuery("export", null)">$msg['registerItem.download.export.button']</a>
+      </td>
+      <td></td>
+    </tr>
+    #end
+  </tbody>
+</table>
+
