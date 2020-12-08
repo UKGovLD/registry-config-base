@@ -1,4 +1,8 @@
 ## Render the table of download options for an item
+#set($href = "#if($versionNumber)#linkhref($item):$versionNumber#else#linkhref($entity)#end")
+<h3 class="text-center">Download formats available</h3>
+<table class="table table-condensed">
+  <tbody>
 
 #set($href = "#if($versionNumber)#linkhrefInt($item):$versionNumber#else#linkhrefInt($entity)#end")
 <h3 class="text-center">$msg['registerItem.download.format.heading']</h3>
@@ -28,6 +32,11 @@
     <tr>
       #downloadFormat("CSV", "csv")
     </tr>
+    #if($register)
+      <tr>
+        <td>ROR</td><td><a href="$href?_format=ror&status=$visibleStatus">plain</a></td><td></td>
+      </tr>
+    #end
     #if(!$versionNumber)
     <tr>
       <td>$msg['registerItem.download.export.label']</td>
