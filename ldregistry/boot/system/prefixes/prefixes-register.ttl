@@ -3,6 +3,7 @@
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 @prefix dcat: <http://www.w3.org/ns/dcat#>
+@prefix dbo:  <http://dbpedia.org/ontology/> .
 @prefix dct:  <http://purl.org/dc/terms/> .
 @prefix dc:   <http://purl.org/dc/elements/1.1/> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
@@ -383,13 +384,27 @@ odrs: a owl:Ontology;
     .
 
 <_dcat> a reg:RegisterItem;
-  reg:status reg:statusStable ;
-  reg:definition [ reg:entity dcat: ]
-  .
+    reg:status reg:statusStable ;
+    reg:definition [ reg:entity dcat: ]
+    .
 
 <http://www.w3.org/ns/dcat#> a owl:Ontology;
-  rdfs:label "dcat"@en;
-  dct:description "Data Catalog Vocabulary"@en;
-  vann:preferredNamespacePrefix "dcat";
-  vann:preferredNamespaceUri "http://www.w3.org/ns/dcat#" ;
-  .
+    rdfs:label "dcat"@en;
+    dct:description "Data Catalog Vocabulary"@en;
+    vann:preferredNamespacePrefix "dcat";
+    vann:preferredNamespaceUri "http://www.w3.org/ns/dcat#" ;
+    .
+
+<_dbo> a reg:RegisterItem;
+    rdfs:label "dbo"@en;
+    reg:itemClass owl:Ontology;
+    reg:status reg:statusStable;
+    reg:definition [ reg:entity dbo: ];
+    .
+
+dbo: a owl:Ontology;
+    rdfs:label "dbo"@en;
+    dct:description "dbo (DBpedia Ontology) prefix registration."@en;
+    vann:preferredNamespacePrefix "dbo";
+    vann:preferredNamespaceUri "http://dbpedia.org/ontology/";
+    .

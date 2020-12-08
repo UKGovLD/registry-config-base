@@ -6,8 +6,6 @@
       </div>
     </div>
 
-    <p>This is a pilot service to provide management and public access to codes and codelists used by the Defra family of organizations.</p>
-
-    <p>It is based on the UKGovLD <a href="https://github.com/UKGovLD/registry-core/wiki"> design</a> for a Linked Data registry.</p>
+    <p>$msg['about.service']</p>
 
 #parse("structure/_footer.vm")
