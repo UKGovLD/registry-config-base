@@ -54,7 +54,7 @@
   #else
     #set($href = $lib.reg.xssCleanURI($res.uRI))
     #if($href.startsWith("javascript:"))
-      #[[#]]
+      #[[#]]#
     #else
       $href
     #end
