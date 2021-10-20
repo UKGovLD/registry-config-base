@@ -51,6 +51,7 @@
     <link type="text/css" rel="stylesheet" href="$assets/css/ui.css" />
     <link type="text/css" rel="stylesheet" href="$assets/css/jquery.dataTables.min.css" />
     <link href="$assets/css/bootstrap-editable.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="$assets/css/joint.min.css" />
 
     #if($extraCSS)
       #foreach($file in $extraCSS.split(","))
