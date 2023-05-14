@@ -56,46 +56,49 @@
       #set( $render = "error" )
 
     #else
-      ## At this point should have a successful RDF description
-      ## $target will be set to the URI of the target resource
-      ## $verionNumber will be set to a version number for the resource, if any
-      #set( $render = "item" )
-
       #set( $model = $response.entity )
-      $model.setLanguage( $language )
-      #set( $node = $model.getNode($target) )
-
-      #if($node.hasResourceValue("rdf:type","reg:Register"))
-        ## A register
-        #set( $register = $node )
-        #set( $entity = $register )
-        #set( $item = $model.getNode($node.uRI.replaceAll("/([^/]*)$", "/_$1")) )
-
-      #elseif($node.hasResourceValue("rdf:type","reg:RegisterItem"))
-        ## a RegisterItem which might in turn point to a register or a real entity
-        #set( $item = $node )
-        #set( $entity = $item.connectedNodes("reg:definition/reg:entity").get(0) )
-        #if( $entity.hasResourceValue("rdf:type","reg:Register") )
-          ## Render as a register
-          #set( $register = $entity )
-        #end
-
+      #if(${model.model.size()} == 0)
+        #set( $render = "not-found" )
       #else
-        ## An entity - may be an external resource entity or may be an registerItem in disguise
-        #set( $entity = $node)
-        #set( $items = $node.connectedNodes("^reg:entity/^reg:definition") )
-        #if( !$items.isEmpty() )
-          ## It's an entity for which we've now found the corresponding RegisterItem
-          #set( $item = $items.get(0) )
-          #if( $item.isAnon() )
-            ## No URI to work with so render as a pure (external) resource
-            #set( $render = "resource" )
-          #end
-        #else
-          ## No corresponding RegisterItem so render as a pure (external) resource
-            #set( $render = "resource" )
-        #end
+        ## At this point should have a successful RDF description
+        ## $target will be set to the URI of the target resource
+        ## $verionNumber will be set to a version number for the resource, if any
+        #set( $render = "item" )
 
+        $model.setLanguage( $language )
+        #set( $node = $model.getNode($target) )
+
+        #if($node.hasResourceValue("rdf:type","reg:Register"))
+          ## A register
+          #set( $register = $node )
+          #set( $entity = $register )
+          #set( $item = $model.getNode($node.uRI.replaceAll("/([^/]*)$", "/_$1")) )
+
+        #elseif($node.hasResourceValue("rdf:type","reg:RegisterItem"))
+          ## a RegisterItem which might in turn point to a register or a real entity
+          #set( $item = $node )
+          #set( $entity = $item.connectedNodes("reg:definition/reg:entity").get(0) )
+          #if( $entity.hasResourceValue("rdf:type","reg:Register") )
+            ## Render as a register
+            #set( $register = $entity )
+          #end
+
+        #else
+          ## An entity - may be an external resource entity or may be an registerItem in disguise
+          #set( $entity = $node)
+          #set( $items = $node.connectedNodes("^reg:entity/^reg:definition") )
+          #if( !$items.isEmpty() )
+            ## It's an entity for which we've now found the corresponding RegisterItem
+            #set( $item = $items.get(0) )
+            #if( $item.isAnon() )
+              ## No URI to work with so render as a pure (external) resource
+              #set( $render = "resource" )
+            #end
+          #else
+            ## No corresponding RegisterItem so render as a pure (external) resource
+              #set( $render = "resource" )
+          #end
+        #end
       #end
 
     #end
