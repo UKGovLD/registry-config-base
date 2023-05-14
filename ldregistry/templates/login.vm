@@ -132,7 +132,7 @@
       <div class="modal-page-footer">
         <div class="row">
           <div class="col-md-offset-10 col-md-1">
-            <a href="#if($return)$lib.reg.xssCleanHTMLAtribute($return)#else$root#end" class="btn">$msg['ui.close']</a>
+            <a href="#if($return)$lib.reg.xssCleanURI($return)#else$root#end" class="btn">$msg['ui.close']</a>
           </div>
         </div>
       </div>
