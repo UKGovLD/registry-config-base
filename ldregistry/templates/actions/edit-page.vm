@@ -88,8 +88,8 @@
         </div>
 
       <div class="modal-page-footer">
-        <button class="btn btn-primary space-above edit-table-save" data-isitem="$isItem" data-return="$return">$msg['registerItem.edit.save.button']</button>
-        <a href="$return" class="btn pull-right">$msg['ui.close']</a>
+        <button class="btn btn-primary space-above edit-table-save" data-isitem="$isItem" data-return="$lib.reg.xssCleanHTMLAtribute($return)">$msg['registerItem.edit.save.button']</button>
+        <a href="$lib.reg.xssCleanURI($return)" class="btn pull-right">$msg['ui.close']</a>
       </div>
 
     </div>
@@ -98,7 +98,7 @@
 <div class="modal-backdrop in"></div>
 
 <div class="modal-page-head">
-    <h3>$msg.get('registerItem.edit.heading', $target)</h3>
+    <h3>$msg.get('registerItem.edit.heading', $lib.reg.xssCleanHTML($target))</h3>
 </div>
 
 #parse("structure/_footer.vm")
