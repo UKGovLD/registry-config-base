@@ -273,7 +273,7 @@
   <form class="form-horizontal" action="$root/system/security/loginoa" method="post">
 	<div class="input-group space-above">
 	  <input type="hidden" name="provider" value="$provider.name" />
-	  <input type="hidden" name="return" value="$return" />
+	  <input type="hidden" name="return" value="$lib.reg.xssCleanHTMLAtribute($return)" />
 	  <input type="submit" value="$msg.get('login.oauth.provider.login', $provider.label)" class="btn btn-primary" type="button" />
 	</div><!-- /input-group -->
   </form>
@@ -283,7 +283,7 @@
   <form class="form-horizontal" action="$root/system/security/registeroa" method="post">
 	<div class="input-group space-above">
 	  <input type="hidden" name="provider" value="$provider.name" />
-	  <input type="hidden" name="return" value="$return" />
+	  <input type="hidden" name="return" value="$lib.reg.xssCleanHTMLAtribute($return)" />
 	  <input type="submit" value="$msg.get('login.oauth.provider.register', $provider.label)" class="btn btn-primary" type="button" />
 	</div>
   </form>
