@@ -64,7 +64,7 @@
 				    <p>$msg['login.oauth.note']</p>
 				  #end
 				  #foreach($provider in $oauthProviders)
-                    #oauthLogin($provider, return)
+                    #oauthLogin($provider, $return)
                   #end
                 </div>
               </div>
