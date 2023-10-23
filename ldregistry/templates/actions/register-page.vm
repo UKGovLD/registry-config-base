@@ -27,7 +27,7 @@
         </div>
         <div id="patch-dialog-status-body" class="modal-body">
 
-            <form id="registration-form" action="$lib.reg.xssCleanHTMLAtribute($register)" method="post" enctype="multipart/form-data" data-return="$lib.reg.xssCleanHTMLAtribute($return)">
+            <form id="registration-form" action="$lib.reg.xssCleanHTMLAtribute($register)" method="post" enctype="multipart/form-data" data-return="$lib.reg.xssCleanReturnUriAttribute($return)">
                 <label>$msg['register.update.content.label']</label>
                 <div class="radio">
                     <label>
@@ -60,7 +60,7 @@
         </div>
 
         <div class="modal-page-footer">
-            <a href="$lib.reg.xssCleanURI($return)" class="btn pull-right">$msg['ui.close']</a>
+            <a href="$lib.reg.xssCleanReturnUriAttribute($return)" class="btn pull-right">$msg['ui.close']</a>
         </div>
       
     </div>

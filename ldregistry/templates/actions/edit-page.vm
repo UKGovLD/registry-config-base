@@ -92,8 +92,8 @@
         </div>
 
       <div class="modal-page-footer">
-        <button class="btn btn-primary space-above edit-table-save" data-isitem="$isItem" data-return="$lib.reg.xssCleanHTMLAtribute($return)">$msg['registerItem.edit.save.button']</button>
-        <a href="$lib.reg.xssCleanURI($return)" class="btn pull-right">$msg['ui.close']</a>
+        <button class="btn btn-primary space-above edit-table-save" data-isitem="$isItem" data-return="$lib.reg.xssCleanReturnUriAttribute($return)">$msg['registerItem.edit.save.button']</button>
+        <a href="$lib.reg.xssCleanReturnUriAttribute($return)" class="btn pull-right">$msg['ui.close']</a>
       </div>
 
     </div>

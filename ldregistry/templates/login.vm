@@ -48,7 +48,7 @@
                       <input type="password" class="form-control" id="password1" name="password" placeholder="$msg['user.password.label']">
                     </div>
                   </div>
-                  <input type="hidden" name="return" value="$lib.reg.xssCleanHTMLAtribute($return)" />
+                  <input type="hidden" name="return" value="$lib.reg.xssCleanReturnUriAttribute($return)" />
                   <div class="form-group">
                     <div class="col-md-offset-1 col-md-10">
                       <button type="submit" class="btn btn-default">$msg['login.button']</button>
@@ -64,7 +64,7 @@
 				    <p>$msg['login.oauth.note']</p>
 				  #end
 				  #foreach($provider in $oauthProviders)
-                    #oauthLogin($provider, $lib.reg.xssCleanHTMLAtribute($return))
+                    #oauthLogin($provider, return)
                   #end
                 </div>
               </div>
@@ -97,7 +97,7 @@
                       <input type="password" class="form-control" id="password2" name="password" placeholder="$msg['user.password.label']">
                     </div>
                   </div>
-                  <input type="hidden" name="return" value="$lib.reg.xssCleanHTMLAtribute($return)" />
+                  <input type="hidden" name="return" value="$lib.reg.xssCleanReturnUriAttribute($return)" />
                   <div class="form-group">
                     <div class="col-md-offset-1 col-md-10">
                       <button type="submit" class="btn btn-default">$msg['login.register.button']</button>
@@ -112,7 +112,7 @@
                   	<p>$msg['login.register.oauth']</p>
                   #end
                   #foreach($provider in $oauthProviders)
-                    #oauthRegister($provider, $lib.reg.xssCleanHTMLAtribute($return))
+                    #oauthRegister($provider, $return)
                   #end
                 </div>
               </div>
@@ -132,7 +132,7 @@
       <div class="modal-page-footer">
         <div class="row">
           <div class="col-md-offset-10 col-md-1">
-            <a href="#if($return)$lib.reg.xssCleanHTMLAtribute($return)#else$root#end" class="btn">$msg['ui.close']</a>
+            <a href="#if($return)$lib.reg.xssCleanReturnUriAttribute($return)#else$root#end" class="btn">$msg['ui.close']</a>
           </div>
         </div>
       </div>
