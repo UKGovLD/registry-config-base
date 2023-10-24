@@ -21,7 +21,7 @@
         <div class="modal-page-body">
             <div class="ajax-error"></div>
 
-            <form id="create-register-form" action="$lib.reg.xssCleanHTMLAtribute($register)" method="post" data-return="$lib.reg.xssCleanHTMLAtribute($return)">
+            <form id="create-register-form" action="$lib.reg.xssCleanHTMLAtribute($register)" method="post" data-return="$lib.reg.xssCleanReturnUriAttribute($return)">
                 <!-- <input type="hidden" name="action" value="register-inline" /> -->
                 <input type="hidden" name="form-type" value="$registry.baseURI/system/form-templates/register" />
 
@@ -87,7 +87,7 @@
         </div>
 
         <div class="modal-page-footer">
-            <a href="$lib.reg.xssCleanURI($return)" class="btn pull-right">$msg['ui.close']</a>
+            <a href="$lib.reg.xssCleanReturnUriAttribute($return)" class="btn pull-right">$msg['ui.close']</a>
         </div>
       
     </div>
